@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "BlooDonor",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
