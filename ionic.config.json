@@ -1,0 +1,7 @@
+{
+  "name": "BlooDonor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
