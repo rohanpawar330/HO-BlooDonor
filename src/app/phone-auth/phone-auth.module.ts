@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FolderPageRoutingModule } from './folder-routing.module';
+import { PhoneAuthPageRoutingModule } from './phone-auth-routing.module';
 
-import { FolderPage } from './folder.page';
+import { PhoneAuthPage } from './phone-auth.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule
+    PhoneAuthPageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [PhoneAuthPage]
 })
-export class FolderPageModule {}
+export class PhoneAuthPageModule {}

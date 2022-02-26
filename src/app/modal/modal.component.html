@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="userDetail">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Surname</ion-label>
+      <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">mobileNo</ion-label>
+      <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">dateOFDonation</ion-label>
+      <ion-input [(ngModel)]="userDetail.dateOFDonation"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">bloodGroup</ion-label>
+      <ion-input [(ngModel)]="userDetail.bloodGroup"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">availableForDonation</ion-label>
+      <ion-input [(ngModel)]="userDetail.availableForDonation"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">city</ion-label>
+      <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">area</ion-label>
+      <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
+    </ion-item>
+  </div>
+
+  <ion-button expand="block" color="success" (click)="updateNote()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Update
+  </ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteNote()">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Delete
+  </ion-button>
+
+</ion-content>
