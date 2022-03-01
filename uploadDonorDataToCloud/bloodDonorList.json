@@ -1,0 +1,58 @@
+[
+    {
+        "firstName": "rohan",
+        "lastName": "pawar",
+        "age": 27,
+        "bloodGroup": "A+",
+        "mobileNo": 9898989898,
+        "gender": "Male",
+        "dateOfDonation": null,
+        "availableForDonation": "No",
+        "city": "jbp",
+        "area": "Ranjhi",
+        "state": "MP",
+        "pincode": 482005
+    },
+    {
+        "firstName": "Aman",
+        "lastName": "singh",
+        "age": 26,
+        "bloodGroup": "O+",
+        "mobileNo": 1919191919,
+        "gender": "Male",
+        "dateOfDonation": null,
+        "availableForDonation": "No",
+        "city": "banaras",
+        "area": "Ranjhi",
+        "state": "MP",
+        "pincode": 482005
+    },
+    {
+        "firstName": "Kanni",
+        "lastName": "kohli",
+        "age": 27,
+        "bloodGroup": "A+",
+        "mobileNo": 8787878787,
+        "gender": "Female",
+        "dateOfDonation": null,
+        "availableForDonation": "Yes",
+        "city": "Jbp",
+        "area": "Ranjhi",
+        "state": "MP",
+        "pincode": 482005
+    },
+    {
+        "firstName": "Shahreen",
+        "lastName": "Shahreen",
+        "age": 24,
+        "bloodGroup": "O+",
+        "mobileNo": 1212121212,
+        "gender": "Female",
+        "dateOfDonation": null,
+        "availableForDonation": "Yes",
+        "city": "Indore",
+        "area": "ABC",
+        "state": "MP",
+        "pincode": 410101
+    }
+]
