@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Donor List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ng-container *ngFor="let user of userDetails">
+      <ion-item (click)="openDonar(user)">
+        <ion-label>
+          {{ user.firstName }}
+
+          {{ user.lastName }}
+        </ion-label>
+        {{user.dateOfDonation}}
+      </ion-item>
+    </ng-container>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addDonar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

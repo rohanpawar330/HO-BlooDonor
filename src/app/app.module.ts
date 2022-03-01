@@ -9,13 +9,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { provideFirebaseApp, initializeApp } from "@angular/fire/app";
 import { provideFirestore, getFirestore } from "@angular/fire/firestore";
+import { AngularFireModule } from '@angular/fire/compat';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(()=>getFirestore())],
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirestore(() => getFirestore()), HttpClientModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
