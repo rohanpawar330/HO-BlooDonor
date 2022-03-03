@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { DataService, UserDetailsI } from '../data.service';
 import { ModalComponent } from '../modal/modal.component';
+import dummyJson from "../../dummyData/dummyData.json";
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,11 @@ export class HomePage {
 
   constructor(private dataService: DataService, private cd: ChangeDetectorRef, private alertCtrl: AlertController, private modalCtrl: ModalController) {
     this.dataService.getNotes().subscribe(res => {
-      console.log(res)
+      console.log(JSON.stringify(res))
       this.userDetails = res;
       this.cd.detectChanges();
     });
+    // this.userDetails = ;
   }
 
   async addNote() {
@@ -114,4 +116,14 @@ export class HomePage {
 
     await modal.present();
   }
+  public form = [
+    { val: 'A+', isChecked: true },
+    { val: 'A-', isChecked: false },
+    { val: 'B+', isChecked: false },
+    { val: 'B-', isChecked: true },
+    { val: 'O+', isChecked: false },
+    { val: 'O-', isChecked: false },
+    { val: 'AB+', isChecked: false },
+    { val: 'AB-', isChecked: false },
+  ];
 }

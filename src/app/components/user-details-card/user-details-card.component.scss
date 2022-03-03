@@ -1,0 +1,24 @@
+.user_img {
+    height: 50px;
+    width: 50px;
+}
+
+.main-container {
+    // width: 100%;
+    // display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.call_container {
+    color: grey;
+    margin-right: 3px;
+    margin-top: 5px;
+}
+
+.call_icon {
+    color: green;
+    height: 20px;
+    width: 15px;
+}
