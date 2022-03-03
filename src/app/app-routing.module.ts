@@ -4,17 +4,26 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    // redirectTo: 'img-upload',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: 'phone-auth',
-    loadChildren: () => import('./phone-auth/phone-auth.module').then( m => m.PhoneAuthPageModule)
+    loadChildren: () => import('./pages/phone-auth/phone-auth.module').then( m => m.PhoneAuthPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  }
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'img-upload',
+    loadChildren: () => import('./pages/img-upload/img-upload.module').then( m => m.ImgUploadPageModule)
+  },
+  {
+    path: 'upload-donor-data',
+    loadChildren: () => import('./pages/upload-donor-data/upload-donor-data.module').then( m => m.UploadDonorDataPageModule)
+  },
 ];
 
 @NgModule({
