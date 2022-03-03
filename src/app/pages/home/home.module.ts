@@ -11,6 +11,7 @@ import { UpdateDeleteModal } from '../../modals/update-delete-modal/update-delet
 import { AddDonorModal } from '../../modals/add-donor-modal/add-donor-modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedComponentsModule } from 'src/app/sharedComponents/shared-components.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     HomePageRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedComponentsModule
   ],
   declarations: [HomePage, UpdateDeleteModal, AddDonorModal],
   providers: [DatePipe]
