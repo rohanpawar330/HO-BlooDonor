@@ -15,3 +15,8 @@ export interface UserDetailsI {
     pincode: number;
   }
 }
+
+export interface DataToSaveI {
+  key: string;
+  value: string;
+}

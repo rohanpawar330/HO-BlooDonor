@@ -23,11 +23,11 @@ export class HomePage {
   fromModalData: string;
 
   constructor(private router: Router, private dataService: DataService, private cd: ChangeDetectorRef, private alertCtrl: AlertController, private modalCtrl: ModalController, private datepipe: DatePipe, private routerOutLet: IonRouterOutlet) {
-    this.dataService.getUsersList().subscribe(res => {
-      console.log(res)
-      this.userDetails = res;
-      this.cd.detectChanges();
-    });
+    // this.dataService.getUsersList().subscribe(res => {
+    //   console.log(res)
+    //   this.userDetails = res;
+    //   this.cd.detectChanges();
+    // });
   }
 
   ngOnInit() {
