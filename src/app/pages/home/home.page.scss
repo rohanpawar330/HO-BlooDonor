@@ -1,0 +1,30 @@
+.main_container {
+    box-shadow: none;
+}
+
+.list {
+    border-radius: 8px;
+    background: red;
+    padding: 20px;
+    margin: 5px;
+    color: white;
+}
+
+.searchBar {
+    padding: 0% 2% 2%;
+}
+
+ion-searchbar {
+    border-radius: 8px !important;
+}
+
+ion-toolbar {
+    height: 12vh
+}
+
+.title {
+    color: white;
+    text-align: center;
+    padding-bottom: 2px;
+    padding-top: 30px;
+}
