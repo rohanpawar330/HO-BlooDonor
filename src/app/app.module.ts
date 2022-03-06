@@ -12,6 +12,7 @@ import { provideFirestore, getFirestore } from "@angular/fire/firestore";
 import { AngularFireModule } from '@angular/fire/compat';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirestore(() => getFirestore()), HttpClientModule, BrowserAnimationsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
