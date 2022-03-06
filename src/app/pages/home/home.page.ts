@@ -76,4 +76,14 @@ export class HomePage {
   onClick() {
     console.log(this.dataService.getAvailableDonor());
   }
+  public form = [
+    { val: 'A+', isChecked: true },
+    { val: 'A-', isChecked: false },
+    { val: 'B+', isChecked: false },
+    { val: 'B-', isChecked: true },
+    { val: 'O+', isChecked: false },
+    { val: 'O-', isChecked: false },
+    { val: 'AB+', isChecked: false },
+    { val: 'AB-', isChecked: false },
+  ];
 }
