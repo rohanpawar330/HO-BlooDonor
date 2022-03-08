@@ -27,34 +27,37 @@ export class AddDonorModal implements OnInit {
   yearValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private modalCtrl: ModalController) { }
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private modalCtrl: ModalController) {}
 
 
 
   ngOnInit() {
-    // this.createDonorForm();
+     this.createDonorForm();
   }
 
   createDonorForm() {
     this.donorForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      lastName:["",[Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
       gender: new FormControl('', Validators.required),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
-      age: new FormControl('', Validators.compose([Validators.required, Validators.minLength(18), Validators.maxLength(60)])),
+      age: new FormControl('', Validators.compose([Validators.required])),
       dateOfDonation: new FormControl(''),
       bloodGroup: new FormControl('', Validators.required),
       availableForDonation: new FormControl('', Validators.required),
       address: this.formBuilder.group({
         city: new FormControl('', Validators.required),
-        area: new FormControl(''),
+        area: new FormControl('',Validators.required),
         state: new FormControl('', Validators.required),
         pincode: new FormControl('', Validators.required),
       })
 
     });
   }
-
+  submit(){
+    console.log(this.donorForm.value);
+    
+  }
 
   addDonar() {
     // this.dataService.addUser({

@@ -1,22 +1,23 @@
-<ion-card *ngFor="let item of data">
-    <ion-item>
-        <ion-avatar slot="start">
-            <img class="user_img" src="assets/icon/demo.png" />
-        </ion-avatar>
-        <ion-label>
-            <div class="main-container width-100 display-flex">
-                <span>{{item.firstName}}</span>
-                <span class="text-bold color-red">{{item.bloodGroup}}</span>
+<ion-card mode="ios">
+    <div class="main-container">
+        <div class="Profile">
+            <ion-avatar>
+                <img class="user_img" src="assets/icon/demo.png" />
+            </ion-avatar>
+        </div>
+        <div class="user_info">
+            <div class="sub_container">
+                <span>{{userInfo.firstName}}</span>
+                <span class="text-bold color-red font-size19">{{userInfo.bloodGroup}}</span>
             </div>
-            <div class="call_container display-flex">
+            <div class="number_container display-flex">
                 <ion-icon name="call" class="call_icon"></ion-icon>
-                <span>{{item.mobileNo}}</span>
+                <span>{{userInfo.mobileNo}}</span>
             </div>
-            <div class="call_container display-flex">
-                <ion-icon name="location-outline" class="color-red"></ion-icon>
-                <span>{{item.address.city}}</span>
+            <div class="number_container display-flex">
+                <ion-icon name="location-outline" class="loc_icon color-red"></ion-icon>
+                <span>{{userInfo.address.city}} {{userInfo.address.area}} {{userInfo.address.state}} {{userInfo.address.pincode}}</span>
             </div>
-        </ion-label>
-    </ion-item>
-
+        </div>
+    </div>
 </ion-card>

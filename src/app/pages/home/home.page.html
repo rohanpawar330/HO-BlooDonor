@@ -1,7 +1,10 @@
 <ion-header>
     <ion-toolbar color="danger">
-        <ion-title class="title">
-            Home
+        <ion-title>
+            <div class="display-flex padding10">
+                <ion-icon class="menuIcon" name="menu" (click)="onMenuClick()"></ion-icon>
+                <div class="titleText"> Home</div>
+            </div>
         </ion-title>
         <div class="searchBar">
             <ion-searchbar showCancelButton="never"></ion-searchbar>
@@ -10,17 +13,17 @@
 </ion-header>
 
 <ion-content>
-    <div class="main_container width-100">
-        <div class="display-flex">
-            <div class="list" *ngFor="let entry of form">
-                <span>{{entry.val}}</span>
-            </div>
-        </div>
+    <ion-scroll class="main_container display-flex">
+        <ion-button color="danger " *ngFor="let entry of form">
+            <span class="btn_text"> {{entry.val}}</span>
+        </ion-button>
+    </ion-scroll>
 
-        <div>
-            <app-user-details-card></app-user-details-card>
-        </div>
-    </div>
+    <!-- User Details Card Data -->
+    <ng-container *ngFor="let item of userInfo">
+        <app-user-details-card [userInfo]="item"></app-user-details-card>
+    </ng-container>
+
     <!-- <ion-list>
         <ng-container *ngFor="let user of userDetails">
             <ion-item (click)="openNote(user)">

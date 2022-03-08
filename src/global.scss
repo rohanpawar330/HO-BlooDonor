@@ -32,14 +32,26 @@
     display: flex;
 }
 
-.color-red {
-    color: red;
+.bgcolor-red {
+    background-color: red;
 }
 
 .text-bold {
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .width-100 {
     width: 100%;
+}
+
+.color-red {
+    color: red;
+}
+
+.font-size19 {
+    font-size: 19px;
+}
+
+.border-radius {
+    border-radius: 25px;
 }
