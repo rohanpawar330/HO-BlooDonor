@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import donorData from '../../../../uploadDonorDataToCloud/bloodDonorList.json';
 import { DataService } from '../../services/data.service';
 import { UserDetailsI } from '../../interface/interface';
+import { UtilityService } from 'src/app/common-utilities/utility.service';
 
 @Component({
   selector: 'app-upload-donor-data',
@@ -12,7 +13,7 @@ export class UploadDonorDataPage implements OnInit {
 
   public countryList: UserDetailsI;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private utility: UtilityService) { }
 
   ngOnInit() {
   }
@@ -27,7 +28,7 @@ export class UploadDonorDataPage implements OnInit {
         age: userData.age,
         dateOfDonation: userData.dateOfDonation,
         bloodGroup: userData.bloodGroup,
-        availableForDonation: userData.availableForDonation,
+        availableForDonation: this.utility._availableForDonation(userData.dateOfDonation, userData.gender).availableForDonation,
         address: {
           city: userData.city,
           area: userData.area,

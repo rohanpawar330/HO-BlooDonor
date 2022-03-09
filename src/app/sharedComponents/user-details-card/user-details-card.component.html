@@ -1,4 +1,4 @@
-<ion-card mode="ios">
+<ion-card mode="ios" (click)="openDonar(userInfo)">
     <div class="main-container">
         <div class="Profile">
             <ion-avatar>
@@ -16,7 +16,8 @@
             </div>
             <div class="number_container display-flex">
                 <ion-icon name="location-outline" class="loc_icon color-red"></ion-icon>
-                <span>{{userInfo.address.city}} {{userInfo.address.area}} {{userInfo.address.state}} {{userInfo.address.pincode}}</span>
+                <span>{{userInfo.address.city}} {{userInfo.address.area}} {{userInfo.address.state}}
+                    {{userInfo.address.pincode}}</span>
             </div>
         </div>
     </div>

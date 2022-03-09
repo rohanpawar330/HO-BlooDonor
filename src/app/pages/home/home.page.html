@@ -13,33 +13,32 @@
 </ion-header>
 
 <ion-content>
-    <ion-scroll class="main_container display-flex">
+    <div class="main_container display-flex">
         <ion-button color="danger " *ngFor="let entry of form">
             <span class="btn_text"> {{entry.val}}</span>
         </ion-button>
-    </ion-scroll>
+    </div>
 
-    <!-- User Details Card Data -->
-    <ng-container *ngFor="let item of userInfo">
-        <app-user-details-card [userInfo]="item"></app-user-details-card>
-    </ng-container>
-
-    <!-- <ion-list>
-        <ng-container *ngFor="let user of userDetails">
-            <ion-item (click)="openNote(user)">
-                <ion-label>
-                    {{ user.firstName }} {{ user.lastName }}
-                </ion-label>
-            </ion-item>
+    <div *ngIf="selectedSegment=='available'">
+        <!-- User Details Card Data -->
+        <ng-container *ngFor="let item of availableDonors">
+            <app-user-details-card [userInfo]="item"></app-user-details-card>
         </ng-container>
-    </ion-list> -->
+    </div>
+    <div *ngIf="selectedSegment=='all'">
+        <!-- User Details Card Data -->
+        <ng-container *ngFor="let item of allDonors">
+            <app-user-details-card [userInfo]="item"></app-user-details-card>
+        </ng-container>
+    </div>
+
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="addNote()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
-    <ion-list>
+    <!-- <ion-list>
         <ng-container *ngFor="let user of userDetails">
             <ion-item (click)="openDonar(user)">
                 <ion-label>
@@ -48,7 +47,7 @@
                 {{user.dateOfDonation}}
             </ion-item>
         </ng-container>
-    </ion-list>
+    </ion-list> -->
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="addDonar()">
@@ -56,4 +55,20 @@
         </ion-fab-button>
     </ion-fab>
 
+
+
+
 </ion-content>
+
+<ion-footer mode="ios" class="ion-no-border">
+    <ion-toolbar mode="ios">
+        <ion-segment mode="ios" value="available" (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="available">
+                <ion-label>Available</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="all">
+                <ion-label>All</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-footer>

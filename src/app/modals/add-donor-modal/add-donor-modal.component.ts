@@ -5,6 +5,7 @@ import { IonDatetime, ModalController, PopoverController } from '@ionic/angular'
 import { DataService } from '../../services/data.service';
 import { UserDetailsI } from '../../interface/interface';
 import { USER_DETAIL } from '../../common-utilities/constant';
+import moment from 'moment';
 
 @Component({
   selector: 'app-add-donor',
@@ -27,18 +28,18 @@ export class AddDonorModal implements OnInit {
   yearValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private modalCtrl: ModalController) {}
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private modalCtrl: ModalController) { }
 
 
 
   ngOnInit() {
-     this.createDonorForm();
+    this.createDonorForm();
   }
 
   createDonorForm() {
     this.donorForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
-      lastName:["",[Validators.required,Validators.pattern("^[a-zA-Z]*$")]],
+      lastName: ["", [Validators.required, Validators.pattern("^[a-zA-Z]*$")]],
       gender: new FormControl('', Validators.required),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
       age: new FormControl('', Validators.compose([Validators.required])),
@@ -47,39 +48,39 @@ export class AddDonorModal implements OnInit {
       availableForDonation: new FormControl('', Validators.required),
       address: this.formBuilder.group({
         city: new FormControl('', Validators.required),
-        area: new FormControl('',Validators.required),
+        area: new FormControl('', Validators.required),
         state: new FormControl('', Validators.required),
         pincode: new FormControl('', Validators.required),
       })
 
     });
   }
-  submit(){
-    console.log(this.donorForm.value);
-    
-  }
+  // submit() {
+  //   console.log(this.donorForm.value);
 
-  addDonar() {
-    // this.dataService.addUser({
-    //   firstName: this.userDetail.firstName,
-    //   lastName: this.userDetail.lastName,
-    //   mobileNo: this.userDetail.mobileNo,
-    //   gender: this.userDetail.gender,
-    //   age: this.userDetail.age,
-    //   dateOfDonation: this.userDetail.dateOfDonation,
-    //   bloodGroup: this.userDetail.bloodGroup,
-    //   availableForDonation: this.userDetail.availableForDonation,
-    //   address: {
-    //     city: this.userDetail.address.city,
-    //     area: this.userDetail.address.area,
-    //     state: this.userDetail.address.state,
-    //     pincode: this.userDetail.address.pincode,
-    //   }
-    // }).then(() => {
-    //   this.router.navigate['home'];
-    // });
+  // }
 
-    console.log(this.userDetail)
+  submit() {
+    this.dataService.addUser({
+      firstName: this.userDetail.firstName,
+      lastName: this.userDetail.lastName,
+      mobileNo: this.userDetail.mobileNo,
+      gender: this.userDetail.gender,
+      age: this.userDetail.age,
+      dateOfDonation: moment(this.userDetail.dateOfDonation).format('DD/MM/YYYY'),
+      bloodGroup: this.userDetail.bloodGroup,
+      availableForDonation: this.userDetail.availableForDonation,
+      address: {
+        city: this.userDetail.address.city,
+        area: this.userDetail.address.area,
+        state: this.userDetail.address.state,
+        pincode: this.userDetail.address.pincode,
+      }
+    }).then(() => {
+      this.router.navigate['home'];
+    });
+
+    // console.log(form)
   }
 
   cancel() { this.router.navigate['home']; }
@@ -96,7 +97,8 @@ export class AddDonorModal implements OnInit {
       date = event.detail.value;
       this.closeDatePicker();
     }
-    console.log(new Date(event.detail.value));
+
+    // this.donorForm.patchValue({ dateofDonation: moment(event.detail.value).format('DD/MM/YYYY') })
   }
 
   closeDatePicker() {

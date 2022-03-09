@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UtilityService } from './common-utilities/utility.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,7 +16,20 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {
-   
+  constructor(private utility: UtilityService, private router: Router) {
+    this.checkLogin();
+  }
+
+  checkLogin() {
+    this.utility._getStorage('user').then(data => {
+      if (data.value) {
+        this.router.navigateByUrl('/home');
+      } else {
+        this.router.navigateByUrl('/');
+      }
+    }).catch(err => {
+      this.router.navigateByUrl('/');
+
+    })
   }
 }
