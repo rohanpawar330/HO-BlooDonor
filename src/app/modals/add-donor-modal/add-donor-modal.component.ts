@@ -103,4 +103,8 @@ export class AddDonorModal implements OnInit {
     this.datePopOver.dismiss();
   }
 
+  _bloodGroupSelected(bloodGroup) {
+    this.userDetail.bloodGroup = bloodGroup;
+  }
+
 }
