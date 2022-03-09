@@ -1,13 +1,19 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      Add New Donor
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="danger">
+        <ion-buttons slot="end">
+            <ion-button (click)="addDonar()">
+                <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="_dismiss()">
+                <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Add New Donor</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
 
-  <!-- <div>
+    <!-- <div>
     <ion-item>
       <ion-label position="stacked">Name</ion-label>
       <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
@@ -60,7 +66,7 @@
       <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
     </ion-item>
   </div> -->
-  <!-- <form [formGroup]="donorForm" (ngSubmit)="onSubmit(donorForm.value, donorForm.valid)" class="form" novalidate>
+    <!-- <form [formGroup]="donorForm" (ngSubmit)="onSubmit(donorForm.value, donorForm.valid)" class="form" novalidate>
     <mat-form-field class="form-element">
       <input matInput placeholder="Company Name" formControlName="firstName" />
       <mat-error *ngIf="firstName.invalid && isSubmitted">
@@ -70,8 +76,8 @@
       </mat-error>
     </mat-form-field> -->
 
-  <!-- nested form group -->
-  <!-- <table class="full-width" cellspacing="0" formGroupName="address">
+    <!-- nested form group -->
+    <!-- <table class="full-width" cellspacing="0" formGroupName="address">
       <span class="fill-remaining-space">Address</span>
       <tr>
         <td>
@@ -97,7 +103,7 @@
 
 
 
-  <!-- <td>
+    <!-- <td>
             <mat-form-field class="full-width">
               <input matInput placeholder="Phone" formControlName="phone" />
               <mat-error *ngIf="contact.controls.phone.invalid && isSubmitted">
@@ -110,11 +116,11 @@
               </mat-error>
             </mat-form-field>
           </td> -->
-  <!-- </tr>
+    <!-- </tr>
     </table> -->
-  <!-- </div> -->
+    <!-- </div> -->
 
-  <!-- <div class="form-element">
+    <!-- <div class="form-element">
       <button mat-raised-button color="primary" type="submit" class="button">
         Submit
       </button>
@@ -127,65 +133,72 @@
     </div>
   </ng-template> -->
 
+    <div class="main_container">
+        <form [formGroup]="donorForm" (ngSubmit)="submit()">
+            <ion-item>
+                <ion-label position="stacked">Name</ion-label>
+                <ion-input [(ngModel)]="userDetail.firstName" formControlName="firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Surname</ion-label>
+                <ion-input [(ngModel)]="userDetail.lastName" formControlName="lastName"></ion-input>
+            </ion-item>
+            <span *ngIf="donorForm.get('lastName').touched && donorForm.get('lastName').hasError('required')">*Requiured Filed</span>
+            <ion-item>
+                <ion-label position="stacked">Gender</ion-label>
+                <ion-input [(ngModel)]="userDetail.gender" formControlName="gender"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">mobileNo</ion-label>
+                <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">bloodGroup</ion-label>
+                <ion-input [(ngModel)]="userDetail.bloodGroup" formControlName="bloodGroup"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">availableForDonation</ion-label>
+                <ion-input [(ngModel)]="userDetail.availableForDonation" formControlName="availableForDonation"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Donation</ion-label>
+                <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
+                </ion-input>
+                <ion-popover trigger="date" size="cover" #datePopOver>
+                    <ng-template>
+                        <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" formControlName="dateOfDonation" locale="en-GB" (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+                        </ion-datetime>
+                        <ion-button (click)="closeDatePicker()">
+                            <ion-icon slot="icon-only" name="close"></ion-icon>
+                        </ion-button>
+                    </ng-template>
+                </ion-popover>
+            </ion-item>
 
+            <ion-item>
+                <ion-label position="stacked">age</ion-label>
+                <ion-input [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
+            </ion-item>
+            <div formGroupName="address">
+                <ion-item>
+                    <ion-label position="stacked">city</ion-label>
+                    <ion-input [(ngModel)]="userDetail.address.city" formControlName="city"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">area</ion-label>
+                    <ion-input [(ngModel)]="userDetail.address.area" formControlName="area"></ion-input>
+                </ion-item>
+            </div>
+            <!-- <ion-button (click)="addDonar()">
+            <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
+        </ion-button> -->
 
-  <ion-item>
-    <ion-label position="stacked">Name</ion-label>
-    <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Surname</ion-label>
-    <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Gender</ion-label>
-    <ion-input [(ngModel)]="userDetail.gender"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">mobileNo</ion-label>
-    <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">bloodGroup</ion-label>
-    <ion-input [(ngModel)]="userDetail.bloodGroup"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">availableForDonation</ion-label>
-    <ion-input [(ngModel)]="userDetail.availableForDonation"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Donation</ion-label>
-    <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
-    </ion-input>
-    <ion-popover trigger="date" size="cover" #datePopOver>
-      <ng-template>
-        <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" locale="en-GB"
-          (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
-        </ion-datetime>
-        <ion-button (click)="closeDatePicker()">
-          <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
-      </ng-template>
-    </ion-popover>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">age</ion-label>
-    <ion-input [(ngModel)]="userDetail.age"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">city</ion-label>
-    <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">area</ion-label>
-    <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
-  </ion-item>
-
-  <ion-button (click)="addDonar()">
-    <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
-  </ion-button>
-
-  <ion-button (click)="_dismiss()">
-    <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-  </ion-button>
+            <!-- <ion-button (click)="_dismiss()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button> -->
+            <ion-button type="submit" [disabled]="!donorForm.invalid">
+                sbumit
+            </ion-button>
+        </form>
+    </div>
 </ion-content>
