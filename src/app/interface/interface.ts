@@ -3,11 +3,11 @@ export interface UserDetailsI {
   firstName: string;
   lastName: string;
   mobileNo: number;
-  dateOfDonation: Date;
+  dateOfDonation: string;
   bloodGroup: string;
   gender: string;
   age: number;
-  availableForDonation: string;
+  availableForDonation: boolean;
   address: {
     city: string;
     area: string;
@@ -19,4 +19,10 @@ export interface UserDetailsI {
 export interface DataToSaveI {
   key: string;
   value: string;
+}
+
+export interface QueryDbI {
+  coloumnName: string;
+  condition: any;
+  attributeName: any;
 }

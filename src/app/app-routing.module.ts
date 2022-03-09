@@ -5,7 +5,7 @@ import { AuthGuardGuard } from './guard/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'img-upload',
+    // redirectTo: 'upload-donor-data',
     redirectTo: 'phone-auth',
     pathMatch: 'full'
   },

@@ -79,7 +79,7 @@ export const USER_DETAIL = {
     age: null,
     dateOfDonation: null,
     bloodGroup: '',
-    availableForDonation: '',
+    availableForDonation: null,
     address: {
         city: '',
         area: '',

@@ -1,8 +1,8 @@
-ion-scroll {
+.main_container {
     flex-wrap: nowrap;
-    overflow-x: scroll!important;
+    overflow-x: scroll !important;
     overflow-y: hidden;
-    --offset-bottom: auto!important;
+    --offset-bottom: auto !important;
     --overflow: hidden;
     overflow: auto;
     &::-webkit-scrollbar {

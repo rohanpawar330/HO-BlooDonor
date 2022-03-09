@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc, docData, addDoc, deleteDoc, updateDoc, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { UserDetailsI } from '../interface/interface';
+import { QueryDbI, UserDetailsI } from '../interface/interface';
 import { firebaseAPI } from '../common-utilities/api.constant';
 
 
@@ -71,5 +71,10 @@ export class DataService {
     console.log(query(usersRef, where("mobileNo", "==", '9090909090')));
 
 
+  }
+
+  _getDataWhere(coloumnName: string, condition: any, attributeName: string | number | boolean): Observable<any> {
+    const usersRef = this.afr.collection(firebaseAPI.ALL_DONOR_LIST, ref => ref.where(coloumnName, condition, attributeName)).valueChanges();
+    return usersRef;
   }
 }
