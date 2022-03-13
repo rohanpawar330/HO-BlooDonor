@@ -5,8 +5,14 @@ export interface UserDetailsI {
   mobileNo: number;
   dateOfDonation: string;
   bloodGroup: string;
+  donationType: string;
   gender: string;
   age: number;
+  updateDetails?: {
+    adminName: string;
+    mobileNo: number;
+    onDate: string;
+  };
   availableForDonation: boolean;
   address: {
     city: string;
@@ -18,11 +24,16 @@ export interface UserDetailsI {
 
 export interface DataToSaveI {
   key: string;
-  value: string;
+  value: object;
 }
 
 export interface QueryDbI {
   coloumnName: string;
   condition: any;
   attributeName: any;
+}
+
+export interface AdminI {
+  name: string;
+  mobileNo: number;
 }

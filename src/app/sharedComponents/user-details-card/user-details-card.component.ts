@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { UserDetailsI } from 'src/app/interface/interface';
 import { UpdateDeleteModal } from 'src/app/modals/update-delete-modal/update-delete-modal.component';
@@ -10,21 +11,17 @@ import { UpdateDeleteModal } from 'src/app/modals/update-delete-modal/update-del
 })
 export class UserDetailsCardComponent implements OnInit {
 
-  @Input() userInfo: any;
+  @Input() donorInfo: any;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
-    // console.log("data",this.userData[0].firstName);
-
   }
 
-  async openDonar(userDetail: UserDetailsI) {
+  async openDonar(donorInfo: UserDetailsI) {
     const modal = await this.modalCtrl.create({
       component: UpdateDeleteModal,
-      componentProps: { id: userDetail.id },
-      breakpoints: [0, 0.5, 0.8, 1],
-      initialBreakpoint: 0.8
+      componentProps: { id: donorInfo.id },
     });
 
     await modal.present();

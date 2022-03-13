@@ -1,12 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-select-option',
-  templateUrl: './select-option.component.html',
-  styleUrls: ['./select-option.component.scss'],
+  selector: 'app-bgselect-option',
+  templateUrl: './bgselect-option.component.html',
+  styleUrls: ['./bgselect-option.component.scss'],
 })
-export class SelectOptionComponent implements OnInit {
-
+export class BGSelectOptionComponent implements OnInit {
+  @Input() bloodGroup;
   @Output() bloodGroupSelected = new EventEmitter<string>();
 
   private bloodGroupList: Array<string> = ["A+", "A-", "AB+", "AB-", "B+", "B-", "O+", "O-"]

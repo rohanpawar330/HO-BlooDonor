@@ -6,30 +6,36 @@
                 <div class="titleText"> Home</div>
             </div>
         </ion-title>
-        <div class="searchBar">
-            <ion-searchbar showCancelButton="never"></ion-searchbar>
-        </div>
+    </ion-toolbar>
+    <ion-toolbar color="danger">
+        <ion-searchbar #search debounce="500" (ionChange)="_ionChange($event)"></ion-searchbar>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div class="main_container display-flex">
-        <ion-button color="danger " *ngFor="let entry of form">
-            <span class="btn_text"> {{entry.val}}</span>
+        <ion-button class="bG-color" *ngFor="let group of bloodGroupList" (click)="selectedBloodGroup(group)"
+            [ngClass]="{'activeColor': selectedBG == group.bG}">
+            <span class="btn_text"> {{group.bG}}</span>
         </ion-button>
     </div>
 
     <div *ngIf="selectedSegment=='available'">
-        <!-- User Details Card Data -->
-        <ng-container *ngFor="let item of availableDonors">
-            <app-user-details-card [userInfo]="item"></app-user-details-card>
-        </ng-container>
+        <div *ngIf="availableDonors?.length > 0">
+
+            <ng-container *ngFor="let item of availableDonors">
+                <app-user-details-card [donorInfo]="item"></app-user-details-card>
+            </ng-container>
+        </div>
+        <div *ngIf="!availableDonors?.length" class="no-data">No Donor's Available!</div>
     </div>
     <div *ngIf="selectedSegment=='all'">
-        <!-- User Details Card Data -->
-        <ng-container *ngFor="let item of allDonors">
-            <app-user-details-card [userInfo]="item"></app-user-details-card>
-        </ng-container>
+        <div *ngIf="allDonors?.length > 0">
+            <ng-container *ngFor="let item of allDonors">
+                <app-user-details-card [donorInfo]="item"></app-user-details-card>
+            </ng-container>
+        </div>
+        <div *ngIf="!allDonors?.length" class="no-data">No Donor's Available!</div>
     </div>
 
 
@@ -38,25 +44,12 @@
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
-    <!-- <ion-list>
-        <ng-container *ngFor="let user of userDetails">
-            <ion-item (click)="openDonar(user)">
-                <ion-label>
-                    {{ user.firstName }} {{ user.lastName }}
-                </ion-label>
-                {{user.dateOfDonation}}
-            </ion-item>
-        </ng-container>
-    </ion-list> -->
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="addDonar()">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
-
-
-
 
 </ion-content>
 

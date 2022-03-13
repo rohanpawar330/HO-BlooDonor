@@ -2,10 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonDatetime, ModalController, PopoverController } from '@ionic/angular';
-import { DataService } from '../../services/data.service';
+import { DonorService } from '../../services/donor.service';
 import { UserDetailsI } from '../../interface/interface';
 import { USER_DETAIL } from '../../common-utilities/constant';
 import moment from 'moment';
+import { UtilityService } from 'src/app/common-utilities/utility.service';
 
 @Component({
   selector: 'app-add-donor',
@@ -25,10 +26,9 @@ export class AddDonorModal implements OnInit {
   phoneRegex: RegExp = /^((\\+91-?)|0)?[0-9]{10}$/;
   todayDate: any = new Date();
   date = this.todayDate.toISOString();
-  yearValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private modalCtrl: ModalController) { }
+  constructor(private utility: UtilityService, private formBuilder: FormBuilder, private donorService: DonorService, private router: Router, private modalCtrl: ModalController) { }
 
 
 
@@ -44,8 +44,9 @@ export class AddDonorModal implements OnInit {
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
       age: new FormControl('', Validators.compose([Validators.required])),
       dateOfDonation: new FormControl(''),
+      donationType: new FormControl(''),
       bloodGroup: new FormControl('', Validators.required),
-      availableForDonation: new FormControl('', Validators.required),
+      availableForDonation: new FormControl(''),
       address: this.formBuilder.group({
         city: new FormControl('', Validators.required),
         area: new FormControl('', Validators.required),
@@ -61,13 +62,16 @@ export class AddDonorModal implements OnInit {
   // }
 
   submit() {
-    this.dataService.addUser({
+    console.log(this.userDetail)
+    this.utility._showLoader();
+    this.donorService.addDonor({
       firstName: this.userDetail.firstName,
       lastName: this.userDetail.lastName,
       mobileNo: this.userDetail.mobileNo,
       gender: this.userDetail.gender,
       age: this.userDetail.age,
-      dateOfDonation: moment(this.userDetail.dateOfDonation).format('DD/MM/YYYY'),
+      donationType: this.userDetail.donationType,
+      dateOfDonation: this.userDetail.dateOfDonation,
       bloodGroup: this.userDetail.bloodGroup,
       availableForDonation: this.userDetail.availableForDonation,
       address: {
@@ -77,8 +81,12 @@ export class AddDonorModal implements OnInit {
         pincode: this.userDetail.address.pincode,
       }
     }).then(() => {
+      this.utility._hideLoader();
       this.router.navigate['home'];
-    });
+    }).catch(() => {
+      this.utility._hideLoader();
+      this.utility._errorAlert();
+    });;
 
     // console.log(form)
   }
@@ -108,5 +116,10 @@ export class AddDonorModal implements OnInit {
   _bloodGroupSelected(bloodGroup) {
     this.userDetail.bloodGroup = bloodGroup;
   }
-
+  _genderSelected(gender) {
+    this.userDetail.gender = gender;
+  }
+  _donationType(donationType) {
+    this.userDetail.donationType = donationType
+  }
 }

@@ -1,0 +1,4 @@
+<ion-select style="max-width: 100%;" [value]="donationType" [interfaceOptions]="selectOptions"
+  (ionChange)="onChange($event)">
+  <ion-select-option [value]="item" *ngFor="let item of donationOf">{{item}}</ion-select-option>
+</ion-select>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilityService } from './common-utilities/utility.service';
+import { Platform } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -15,13 +17,27 @@ export class AppComponent {
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
+  lastBack;
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private utility: UtilityService, private router: Router) {
-    this.checkLogin();
+  constructor(private utility: UtilityService, private router: Router, private platform: Platform) {
+    // this.checkLogin();
+    this.initializeApp()
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // this does work
+      this.platform.backButton.subscribeWithPriority(9999, () => {
+        if (Date.now() - this.lastBack < 500) { // logic for double tap: delay of 500ms between two clicks of back button
+          navigator['app'].exitApp();
+        }
+        this.lastBack = Date.now();
+      });
+    });
   }
 
   checkLogin() {
-    this.utility._getStorage('user').then(data => {
+    this.utility._getStorage('admin').then(data => {
       if (data.value) {
         this.router.navigateByUrl('/home');
       } else {

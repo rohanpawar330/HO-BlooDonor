@@ -1,0 +1,4 @@
+<ion-select style="max-width: 100%;" [value]="bloodGroup" [interfaceOptions]="selectOptions"
+  (ionChange)="onChange($event)">
+  <ion-select-option [value]="item" *ngFor="let item of bloodGroupList">{{item}}</ion-select-option>
+</ion-select>

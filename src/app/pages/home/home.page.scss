@@ -68,3 +68,24 @@ ion-title {
     justify-content: center;
     width: 100%;
 }
+
+.bG-color {
+    --background: red;
+}
+.activeColor {
+    color: white;
+    --background: #593f8d;
+}
+.toggle-button > div:first-child > button {
+    border-radius: 22px 0 0 22px;
+}
+.toggle-button > div:last-child > button {
+    border-radius: 0 22px 22px 0;
+}
+.toggle-button > div > button {
+    font-size: 10px;
+    padding: 4px 16px;
+    color: black;
+    background: #b8bbbf;
+}
+

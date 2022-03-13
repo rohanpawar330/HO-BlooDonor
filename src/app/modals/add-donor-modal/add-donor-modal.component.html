@@ -15,31 +15,31 @@
 
   <!-- <div>
     <ion-item>
-      <ion-label position="stacked">Name</ion-label>
+      <ion-label position="floating">Name</ion-label>
       <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Surname</ion-label>
+      <ion-label position="floating">Surname</ion-label>
       <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Gender</ion-label>
+      <ion-label position="floating">Gender</ion-label>
       <ion-input [(ngModel)]="userDetail.gender"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">mobileNo</ion-label>
+      <ion-label position="floating">mobileNo</ion-label>
       <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">bloodGroup</ion-label>
+      <ion-label position="floating">bloodGroup</ion-label>
       <ion-input [(ngModel)]="userDetail.bloodGroup"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">availableForDonation</ion-label>
+      <ion-label position="floating">availableForDonation</ion-label>
       <ion-input [(ngModel)]="userDetail.availableForDonation"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Donation</ion-label>
+      <ion-label position="floating">Donation</ion-label>
       <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
       </ion-input>
       <ion-popover trigger="date" size="cover" #datePopOver>
@@ -54,15 +54,15 @@
       </ion-popover>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">age</ion-label>
+      <ion-label position="floating">age</ion-label>
       <ion-input [(ngModel)]="userDetail.age"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">city</ion-label>
+      <ion-label position="floating">city</ion-label>
       <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">area</ion-label>
+      <ion-label position="floating">area</ion-label>
       <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
     </ion-item>
   </div> -->
@@ -136,40 +136,41 @@
   <div class="main_container">
     <form [formGroup]="donorForm" (ngSubmit)="submit()">
       <ion-item>
-        <ion-label position="stacked">Name</ion-label>
+        <ion-label position="floating">Name</ion-label>
         <ion-input [(ngModel)]="userDetail.firstName" formControlName="firstName"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">Surname</ion-label>
+        <ion-label position="floating">Surname</ion-label>
         <ion-input [(ngModel)]="userDetail.lastName" formControlName="lastName"></ion-input>
       </ion-item>
       <span *ngIf="donorForm.get('lastName').touched && donorForm.get('lastName').hasError('required')">*Requiured
         Filed</span>
       <ion-item>
-        <ion-label position="stacked">Gender</ion-label>
-        <ion-input [(ngModel)]="userDetail.gender" formControlName="gender"></ion-input>
+        <ion-label position="floating">Gender</ion-label>
+        <app-gender-selection-option class="width-100" (genderSelected)="_genderSelected($event)">
+        </app-gender-selection-option>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">mobileNo</ion-label>
+        <ion-label position="floating">Donation Type</ion-label>
+        <app-donation-selection-option class="width-100" (donationType)="_donationType($event)">
+        </app-donation-selection-option>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">mobileNo</ion-label>
         <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">bloodGroup</ion-label>
-        <app-select-option class="width-100" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-select-option>
-        <!-- <ion-input [(ngModel)]="userDetail.bloodGroup" formControlName="bloodGroup"></ion-input> -->
+        <ion-label position="floating">bloodGroup</ion-label>
+        <app-bgselect-option class="width-100" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">availableForDonation</ion-label>
-        <ion-input [(ngModel)]="userDetail.availableForDonation" formControlName="availableForDonation"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Donation</ion-label>
+        <ion-label position="floating">Donation Date</ion-label>
         <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
         </ion-input>
-        <ion-popover trigger="date" size="cover" #datePopOver>
+        <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
           <ng-template>
             <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" formControlName="dateOfDonation"
-              locale="en-GB" (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+              (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
             </ion-datetime>
             <ion-button (click)="closeDatePicker()">
               <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -179,16 +180,16 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked">age</ion-label>
+        <ion-label position="floating">age</ion-label>
         <ion-input [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
       </ion-item>
       <div formGroupName="address">
         <ion-item>
-          <ion-label position="stacked">city</ion-label>
+          <ion-label position="floating">city</ion-label>
           <ion-input [(ngModel)]="userDetail.address.city" formControlName="city"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">area</ion-label>
+          <ion-label position="floating">area</ion-label>
           <ion-input [(ngModel)]="userDetail.address.area" formControlName="area"></ion-input>
         </ion-item>
       </div>

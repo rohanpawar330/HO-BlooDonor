@@ -9,7 +9,6 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
-
 /* Core CSS required for Ionic components to work properly */
 
 @import "~@ionic/angular/css/core.css";
@@ -19,7 +18,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 
@@ -54,4 +53,16 @@
 
 .border-radius {
     border-radius: 25px;
+}
+.no-data {
+    font-size: 17px;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    color: gray;
+}
+.dp-f-al-c-jc-sb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
