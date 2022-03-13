@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SelectOptionComponent } from './select-option.component';
+import { BGSelectOptionComponent } from './bgselect-option.component';
 
 describe('SelectOptionComponent', () => {
-  let component: SelectOptionComponent;
-  let fixture: ComponentFixture<SelectOptionComponent>;
+  let component: BGSelectOptionComponent;
+  let fixture: ComponentFixture<BGSelectOptionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectOptionComponent ],
+      declarations: [BGSelectOptionComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SelectOptionComponent);
+    fixture = TestBed.createComponent(BGSelectOptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -6,12 +6,13 @@
         "bloodGroup": "A+",
         "mobileNo": 9898989898,
         "gender": "Male",
-        "dateOfDonation": "09/10/2021",
+        "dateOfDonation": "9/10/2021",
         "availableForDonation": null,
         "city": "jbp",
         "area": "Ranjhi",
         "state": "MP",
-        "pincode": 482005
+        "pincode": 482005,
+        "donationType": null
     },
     {
         "firstName": "Aman",
@@ -20,12 +21,13 @@
         "bloodGroup": "O+",
         "mobileNo": 1919191919,
         "gender": "Male",
-        "dateOfDonation": "01/03/2022",
+        "dateOfDonation": "1/3/2022",
         "availableForDonation": null,
         "city": "banaras",
         "area": "Ranjhi",
         "state": "UP",
-        "pincode": 482005
+        "pincode": 482005,
+        "donationType": null
     },
     {
         "firstName": "Kanni",
@@ -34,12 +36,13 @@
         "bloodGroup": "A+",
         "mobileNo": 8787878787,
         "gender": "Female",
-        "dateOfDonation": "09/02/2022",
+        "dateOfDonation": "09/2/2022",
         "availableForDonation": null,
         "city": "Jbp",
         "area": "Ranjhi",
         "state": "MP",
-        "pincode": 482005
+        "pincode": 482005,
+        "donationType": null
     },
     {
         "firstName": "Shahreen",
@@ -48,12 +51,13 @@
         "bloodGroup": "O+",
         "mobileNo": 8923849283,
         "gender": "Female",
-        "dateOfDonation": "07/11/2021",
+        "dateOfDonation": "7/11/2021",
         "availableForDonation": null,
         "city": "Indore",
         "area": "vijay nagar",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Ravi",
@@ -62,12 +66,13 @@
         "bloodGroup": "O+",
         "mobileNo": 2342342342,
         "gender": "Male",
-        "dateOfDonation": "01/01/2022",
+        "dateOfDonation": "1/1/2022",
         "availableForDonation": null,
         "city": "katni",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Praveen",
@@ -76,12 +81,13 @@
         "bloodGroup": "O+",
         "mobileNo": 2342342344,
         "gender": "Male",
-        "dateOfDonation": "12/02/2022",
+        "dateOfDonation": "12/2/2022",
         "availableForDonation": null,
         "city": "sihora",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Pooja",
@@ -90,12 +96,13 @@
         "bloodGroup": "O+",
         "mobileNo": 2312121111,
         "gender": "Female",
-        "dateOfDonation": "09/02/2022",
+        "dateOfDonation": "9/2/2022",
         "availableForDonation": null,
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Seeta",
@@ -109,7 +116,8 @@
         "city": "chhindwara",
         "area": "Saori",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Geeta",
@@ -123,7 +131,8 @@
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Hari",
@@ -137,7 +146,8 @@
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Deepak",
@@ -151,7 +161,8 @@
         "city": "jbp",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Himanshu",
@@ -165,7 +176,8 @@
         "city": "jbp",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Pathak",
@@ -179,7 +191,8 @@
         "city": "banaras",
         "area": "ABC",
         "state": "UP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     },
     {
         "firstName": "Dhyan",
@@ -193,6 +206,7 @@
         "city": "banaras",
         "area": "ABC",
         "state": "UP",
-        "pincode": 410101
+        "pincode": 410101,
+        "donationType": null
     }
 ]

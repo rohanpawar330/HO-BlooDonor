@@ -22,7 +22,7 @@ import { SharedComponentsModule } from 'src/app/sharedComponents/shared-componen
     ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    SharedComponentsModule
+    SharedComponentsModule,
   ],
   declarations: [HomePage, UpdateDeleteModal, AddDonorModal],
   providers: [DatePipe]

@@ -4,79 +4,67 @@ import { Clipboard } from '@capacitor/clipboard';
 import { Storage } from '@capacitor/storage';
 import { DataToSaveI } from '../interface/interface';
 import moment from 'moment';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
 
-  constructor() { }
+  constructor(private loadingController: LoadingController, private alertController: AlertController) { }
 
   // chcek donor available for donation
   _availableForDonation(dateOfDonation, userGender) {
     var todayDate = moment().toDate();
     var lastDonationDate = dateOfDonation;
-    // console.log(moment('09/03/2022').isSame(dateOfDonation));
-    // console.log('after', moment('09/03/2022').isAfter(dateOfDonation))
-    // console.log('before', moment('09/03/2022').isBefore(dateOfDonation))
+    if (lastDonationDate) {
 
-
-    // var given = moment(dateOfDonation, "DD/MM/YYYY");
-    // var current = moment(todayDate).startOf('day');
-
-    // //Difference in number of days
-    // console.log(moment.duration(given.diff(current)).asDays());
-    // var a = moment([2007, 0, 29]);
-    // var b = moment([2007, 0, 28]);
-
-    // console.log(a.diff(b, 'days'))
-    // var endDate = '09/12/2021';
-    // var startDate = moment().toDate();
-    // const getDaysDiff = (startDate, endDate, date_format = "DD/MM/YYYY") => {
-    //   const getDateAsArray = (date) => {
-    //     return moment(date, date_format);
-    //   }
-    //   return;
-    // }
-    // console.log(moment(lastDonationDate, "DD/MM/YYYY").diff(moment(todayDate, "DD/MM/YYYY"), 'days') + 1);
-
-
-
-    var diffInDays = -(moment(lastDonationDate, "DD/MM/YYYY").diff(moment(todayDate, "DD/MM/YYYY"), 'days') + 1);
-    if (userGender == gender.male) {
-      return diffInDays > totalDayDonation.maleDay ? {
-        availableForDonation: true,
-        daysRemain: diffInDays
-      } : {
-        availableForDonation: false,
-        daysRemain: diffInDays
+      var diffInDays = -(moment(lastDonationDate).diff(moment(todayDate, "DD/MM/YYYY"), 'days') + 1)
+      if (userGender == gender.male) {
+        return diffInDays > totalDayDonation.maleDay ? {
+          availableForDonation: true,
+          daysRemain: diffInDays
+        } : {
+          availableForDonation: false,
+          daysRemain: diffInDays
+        }
+      } else {
+        return diffInDays > totalDayDonation.femaleDay ? {
+          availableForDonation: true,
+          daysRemain: diffInDays
+        } : {
+          availableForDonation: false,
+          daysRemain: diffInDays
+        }
       }
-    } else {
-      return diffInDays > totalDayDonation.femaleDay ? {
-        availableForDonation: true,
-        daysRemain: diffInDays
-      } : {
-        availableForDonation: false,
-        daysRemain: diffInDays
-      }
+    }
+    return {
+      availableForDonation: true,
+      daysRemain: diffInDays
+
     }
   }
 
   // START Clipboard
-  _copyText(textToCopy) {
+  _copyUserDetail(userDetail) {
     Clipboard.write({
-      string: textToCopy
+      string: `
+      Name : ${userDetail.firstName} ${userDetail.lastName}
+      Mobile no. : ${userDetail.mobileNo}
+      BloodGroup : ${userDetail.bloodGroup}
+      Address : ${userDetail.address.area} ${userDetail.address.city} ${userDetail.address.state}
+    `
     });
   }
 
-  _pasteText(): Promise<any> {
+  _pasteUserDetail(): Promise<any> {
     return Clipboard.read();
   }
   // END Clipboard
 
   // START Storage
   _setStorage(dataToSave: DataToSaveI) {
-    Storage.set({ key: dataToSave.key, value: dataToSave.value });
+    Storage.set({ key: dataToSave.key, value: JSON.stringify(dataToSave.value) });
   }
 
   _getStorage(dataToGet): Promise<any> {
@@ -88,4 +76,42 @@ export class UtilityService {
   }
   // END Storage
 
+  async _showLoader() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+    });
+    // await loading.present();
+  }
+
+  async _hideLoader() {
+    // this.loadingController.dismiss();
+  }
+
+
+  async _errorAlert(subHeader = 'Try again later', message = 'Something went wrong with server!...') {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error!',
+      subHeader: subHeader,
+      mode: 'ios',
+      message: message,
+      buttons: ['OK']
+    });
+
+    alert.present();
+  }
+
+  async _confirmationAlert(header, subHeader, message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      subHeader: subHeader,
+      mode: 'ios',
+      message: message,
+      buttons: ['Cancel', 'Accept']
+    });
+
+    alert.present();
+  }
 }

@@ -1,24 +1,33 @@
-<ion-card mode="ios" (click)="openDonar(userInfo)">
+<ion-card mode="ios" (click)="openDonar(donorInfo)" class="ion-margin">
     <div class="main-container">
-        <div class="Profile">
+        <div
+            [ngClass]="{'available-p': donorInfo?.availableForDonation==true,'not-available-p':donorInfo?.availableForDonation==false}">
             <ion-avatar>
-                <img class="user_img" src="assets/icon/demo.png" />
+                <img class="user_img" src="assets/icon/{{donorInfo?.gender}}.png" />
             </ion-avatar>
         </div>
-        <div class="user_info">
-            <div class="sub_container">
-                <span>{{userInfo.firstName}}</span>
-                <span class="text-bold color-red font-size19">{{userInfo.bloodGroup}}</span>
+        <div class="user_info dp-f-al-c-jc-sb">
+            <div class="width-100">
+                <div class="name-cont">
+                    <span>{{donorInfo?.firstName | titlecase }} {{donorInfo?.lastName | titlecase }}</span>
+                </div>
+                <div class="number_container display-flex">
+                    <ion-icon name="call" class="call_icon"></ion-icon>
+                    <span>{{donorInfo?.mobileNo}}</span>
+                </div>
+                <div class="number_container display-flex">
+                    <ion-icon name="location-outline" class="loc_icon color-red"></ion-icon>
+                    <span class="ellipsis-text">{{donorInfo?.address?.city | titlecase }} {{donorInfo?.address?.area }}
+                        {{donorInfo?.address?.state}}
+                    </span>
+                </div>
             </div>
-            <div class="number_container display-flex">
-                <ion-icon name="call" class="call_icon"></ion-icon>
-                <span>{{userInfo.mobileNo}}</span>
-            </div>
-            <div class="number_container display-flex">
-                <ion-icon name="location-outline" class="loc_icon color-red"></ion-icon>
-                <span>{{userInfo.address.city}} {{userInfo.address.area}} {{userInfo.address.state}}
-                    {{userInfo.address.pincode}}</span>
+            <div>
+                <span class="text-bold color-red font-size19">{{donorInfo?.bloodGroup}}</span>
             </div>
         </div>
+        <!-- <ion-button fill="transparent" (click)="onClick()">
+            <ion-icon class="forward-arrow" name="chevron-forward-outline"></ion-icon>
+        </ion-button> -->
     </div>
 </ion-card>

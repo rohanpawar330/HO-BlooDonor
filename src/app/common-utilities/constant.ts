@@ -79,6 +79,7 @@ export const USER_DETAIL = {
     age: null,
     dateOfDonation: null,
     bloodGroup: '',
+    donationType: '',
     availableForDonation: null,
     address: {
         city: '',
@@ -87,3 +88,15 @@ export const USER_DETAIL = {
         pincode: null,
     }
 };
+
+export const BLOOD_GROUP =
+    [
+        { bG: 'A+', isChecked: false },
+        { bG: 'A-', isChecked: false },
+        { bG: 'B+', isChecked: false },
+        { bG: 'B-', isChecked: false },
+        { bG: 'O+', isChecked: false },
+        { bG: 'O-', isChecked: false },
+        { bG: 'AB+', isChecked: false },
+        { bG: 'AB-', isChecked: false }
+    ];

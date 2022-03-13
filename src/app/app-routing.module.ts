@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
-    canActivate: [AuthGuardGuard]
+    // canActivate: [AuthGuardGuard]
   },
   {
     path: 'img-upload',
@@ -26,6 +26,7 @@ const routes: Routes = [
     path: 'upload-donor-data',
     loadChildren: () => import('./pages/upload-donor-data/upload-donor-data.module').then(m => m.UploadDonorDataPageModule)
   },
+
 ];
 
 @NgModule({
