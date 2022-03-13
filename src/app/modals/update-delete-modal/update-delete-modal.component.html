@@ -1,94 +1,100 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start" (click)="dismissModal()">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Details</ion-title>
-    <ion-button slot="end" (click)="_enableEdit()" fill="clear">
-      <ion-icon color="light" slot="icon-only" name="create-outline"></ion-icon>
-    </ion-button>
-    <ion-button slot="end" (click)="_copyUserDetails()" fill="clear">
-      <ion-icon color="light" slot="icon-only" name="copy-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="start" (click)="dismissModal()">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Details</ion-title>
+        <ion-button slot="end" (click)="_enableEdit()" fill="clear">
+            <ion-icon color="light" slot="icon-only" name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" (click)="_copyUserDetails()" fill="clear">
+            <ion-icon color="light" slot="icon-only" name="copy-outline"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="userDetail">
-    <ion-item>
-      <ion-label position="floating">Donation Type</ion-label>
-      <app-donation-selection-option [donationType]="userDetail?.donationType" class="width-100"
-        (selectedDonationType)="_donationType($event)">
-      </app-donation-selection-option>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Donation Date</ion-label>
-      <ion-input value="{{ userDetail?.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
-      </ion-input>
-      <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
-        <ng-template>
-          <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" locale="en-GB"
-            (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
-          </ion-datetime>
-          <ion-button (click)="closeDatePicker()">
-            OK
-          </ion-button>
-        </ng-template>
-      </ion-popover>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">Name</ion-label>
-      <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">Surname</ion-label>
-      <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">bloodGroup</ion-label>
-      <app-bgselect-option class="width-100" [bloodGroup]="userDetail?.bloodGroup"
-        (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">Gender</ion-label>
-      <app-gender-selection-option class="width-100" [gender]="userDetail?.gender"
-        (genderSelected)="_genderSelected($event)">
-      </app-gender-selection-option>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">mobileNo</ion-label>
-      <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">age</ion-label>
-      <ion-input [(ngModel)]="userDetail.age"></ion-input>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">city</ion-label>
-      <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
-    </ion-item>
-    <ion-item [disabled]="editable">
-      <ion-label position="floating">area</ion-label>
-      <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
-    </ion-item>
-  </ion-card>
+    <ion-card *ngIf="userDetail">
+        <ion-item>
+            <ion-label position="floating">Donation Type</ion-label>
+            <app-donation-selection-option [donationType]="userDetail?.donationType" class="width-100" (selectedDonationType)="_donationType($event)">
+            </app-donation-selection-option>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Donation Date</ion-label>
+            <ion-input value="{{ userDetail?.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
+            </ion-input>
+            <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
+                <ng-template>
+                    <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" locale="en-GB" (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+                    </ion-datetime>
+                    <ion-button (click)="closeDatePicker()">
+                        OK
+                    </ion-button>
+                </ng-template>
+            </ion-popover>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">Name</ion-label>
+            <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">Surname</ion-label>
+            <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">bloodGroup</ion-label>
+            <app-bgselect-option class="width-100" [bloodGroup]="userDetail?.bloodGroup" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">Gender</ion-label>
+            <app-gender-selection-option class="width-100" [gender]="userDetail?.gender" (genderSelected)="_genderSelected($event)">
+            </app-gender-selection-option>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">mobileNo</ion-label>
+            <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">age</ion-label>
+            <ion-input [(ngModel)]="userDetail.age"></ion-input>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">city</ion-label>
+            <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
+        </ion-item>
+        <ion-item [disabled]="editable">
+            <ion-label position="floating">area</ion-label>
+            <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
+        </ion-item>
+    </ion-card>
 
-  <ion-button expand="block" color="success" (click)="updateNote()">
+    <div class="btn_submit_cancel">
+
+        <ion-button class="submit-cancel_btn" shape="round" color="light" (click)="updateNote()">
+            <ion-icon class="_icon" name="save" slot="start"></ion-icon>
+            Update
+        </ion-button>
+        <ion-button class="submit-cancel_btn" shape="round" color="light" type="submit" (click)="deleteNote()">
+            <ion-icon class="_icon" slot="icon-only" name="trash"></ion-icon>Delete
+        </ion-button>
+    </div>
+    <!-- <ion-button expand="block" color="success" (click)="updateNote()">
     <ion-icon name="save" slot="start"></ion-icon>
     Update
   </ion-button>
   <ion-button expand="block" color="danger" (click)="deleteNote()">
     <ion-icon name="trash" slot="start"></ion-icon>
     Delete
-  </ion-button>
+  </ion-button> -->
 
 
-  <div class="update-details">
-    <span *ngIf="userDetail?.updateDetails?.adminName">Last updated by :
+    <div class="update-details">
+        <span *ngIf="userDetail?.updateDetails?.adminName">Last updated by :
       {{userDetail?.updateDetails?.adminName}}</span>
-    <span *ngIf="userDetail?.updateDetails?.mobileNo">MobileNo :
+        <span *ngIf="userDetail?.updateDetails?.mobileNo">MobileNo :
       {{userDetail?.updateDetails?.mobileNo.toString().slice(0,
       5)+'XXXXX'}}</span>
-    <span *ngIf="userDetail?.updateDetails?.onDate">on : {{userDetail?.updateDetails?.onDate }}</span>
-  </div>
+        <span *ngIf="userDetail?.updateDetails?.onDate">on : {{userDetail?.updateDetails?.onDate }}</span>
+    </div>
 </ion-content>

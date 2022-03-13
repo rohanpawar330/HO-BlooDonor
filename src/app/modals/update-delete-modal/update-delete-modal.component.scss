@@ -1,12 +1,29 @@
 ion-label {
     color: gray !important;
 }
+
 .update-details {
     display: flex;
     flex-direction: column;
     color: gray;
     padding: 10px;
 }
+
 #date {
     text-align: left !important;
+}
+
+.submit-cancel_btn {
+    font-size: 19px;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+._icon {
+    height: 20px;
+    width: 20px;
+    color: black;
+    margin-right: 10px;
 }

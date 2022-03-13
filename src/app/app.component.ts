@@ -1,25 +1,24 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UtilityService } from './common-utilities/utility.service';
+import { Router } from '@angular/router';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Home', url: '/home', icon: 'home' },
+    { title: 'Add Admin', url: '/admin-details', icon: 'person' },
+    { title: 'LogOut', url: '/phone-auth', icon: 'log-out' },
   ];
-  lastBack;
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(private utility: UtilityService, private router: Router, private platform: Platform) {
+  private loading;
+  private lastBack;
+  constructor(private platform: Platform, private router: Router, private utility: UtilityService, private loadingController: LoadingController, private menuController: MenuController) {
+
     // this.checkLogin();
     this.initializeApp()
   }
@@ -48,4 +47,27 @@ export class AppComponent {
 
     })
   }
+  onMenuClick(menuDetails) {
+    if (menuDetails.title == 'LogOut') {
+      this.logout();
+    }
+    // console.log("menuDetails",menuDetails);
+    this.router.navigateByUrl(menuDetails.url)
+  }
+  logout() {
+    this.loadingController.create({
+      message: 'Please wait'
+    }).then((overlay) => {
+      this.loading = overlay;
+      this.loading.present()
+    })
+    setTimeout(() => {
+      this.loading.dismiss();
+      this.menuController.close();
+      this.utility._clearStorage()
+    }, 2000);
+
+  }
+
+
 }

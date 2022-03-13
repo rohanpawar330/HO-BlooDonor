@@ -1,8 +1,13 @@
 .user_info {
-    width: 74%;
+    <<<<<<< HEAD width: 74%;
     margin-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    =======width: 76%;
+    // margin-left: 10px;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    >>>>>>>76b4889 (Add admin Page design)
 }
 
 .main-container {
@@ -18,6 +23,18 @@
     font-weight: 500;
     padding-bottom: 3px;
     color: black;
+    <<<<<<< HEAD=======padding-bottom: 2px;
+    margin-left: 10px;
+}
+
+.avatar {
+    // vertical-align: middle;
+    width: 80px;
+    height: 95px;
+    border-radius: 50%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    >>>>>>>76b4889 (Add admin Page design)
 }
 
 .loc_icon {
@@ -32,15 +49,40 @@
     justify-content: space-between;
 }
 
+.sub_address {
+    margin-left: 30px;
+    font-size: 16px;
+    color: grey;
+}
+
+.address_container {
+    display: flex;
+    <<<<<<< HEAD=======align-items: center;
+    >>>>>>>76b4889 (Add admin Page design) font-size: 16px;
+    color: grey;
+    padding-bottom: 2px;
+    padding-top: 3px;
+    margin-left: 10px;
+}
+
+.mg-left-10px {
+    margin-left: 10px;
+}
+
 .number_container {
     display: flex;
+    align-items: center;
     font-size: 16px;
     color: grey;
     padding-bottom: 2px;
+    padding-top: 3px;
+    margin-left: 10px;
 }
-.number_container > ion-icon {
+
+.number_container>ion-icon {
     padding-right: 4px;
 }
+
 .call_container {
     color: grey;
     margin-right: 3px;
@@ -52,26 +94,37 @@
     height: 18px;
     width: 15px;
 }
+
 .available-p {
     border: 2px solid green;
     border-radius: 50%;
     padding: 3px;
 }
+
 .not-available-p {
     border: 2px solid red;
     border-radius: 50%;
     padding: 3px;
 }
 
-.user_info > div {
+.user_info>div {
     padding: 3px 0;
 }
+
 .ellipsis-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 75%;
 }
+
 // .forward-arrow {
 //     color: lightslategrayred;
 // }
+.margin3px {
+    margin-left: 3px;
+}
+
+.copy_icon {
+    padding-top: 1px;
+}

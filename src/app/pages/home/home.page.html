@@ -14,8 +14,7 @@
 
 <ion-content>
     <div class="main_container display-flex">
-        <ion-button class="bG-color" *ngFor="let group of bloodGroupList" (click)="selectedBloodGroup(group)"
-            [ngClass]="{'activeColor': selectedBG == group.bG}">
+        <ion-button class="bG-color" *ngFor="let group of bloodGroupList" (click)="selectedBloodGroup(group)" [ngClass]="{'activeColor': selectedBG == group.bG}">
             <span class="btn_text"> {{group.bG}}</span>
         </ion-button>
     </div>
@@ -37,13 +36,6 @@
         </div>
         <div *ngIf="!allDonors?.length" class="no-data">No Donor's Available!</div>
     </div>
-
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="addNote()">
-            <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="addDonar()">

@@ -27,22 +27,21 @@ export class AddDonorModal implements OnInit {
   todayDate: any = new Date();
   date = this.todayDate.toISOString();
 
-
-  constructor(private utility: UtilityService, private formBuilder: FormBuilder, private donorService: DonorService, private router: Router, private modalCtrl: ModalController) { }
-
+  constructor(private formBuilder: FormBuilder,private utility:UtilityService, private donorService: DonorService, private router: Router, private modalCtrl: ModalController) {}
 
 
-  ngOnInit() {
-    this.createDonorForm();
+
+  ngOnInit() {        
+     this.createDonorForm();
   }
 
   createDonorForm() {
     this.donorForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
-      lastName: ["", [Validators.required, Validators.pattern("^[a-zA-Z]*$")]],
+      lastName:new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
-      age: new FormControl('', Validators.compose([Validators.required])),
+      age: new FormControl('', Validators.compose([Validators.required,Validators.min(18), Validators.max(40)])),
       dateOfDonation: new FormControl(''),
       donationType: new FormControl(''),
       bloodGroup: new FormControl('', Validators.required),

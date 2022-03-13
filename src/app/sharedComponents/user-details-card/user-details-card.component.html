@@ -1,7 +1,6 @@
 <ion-card mode="ios" (click)="openDonar(donorInfo)" class="ion-margin">
     <div class="main-container">
-        <div
-            [ngClass]="{'available-p': donorInfo?.availableForDonation==true,'not-available-p':donorInfo?.availableForDonation==false}">
+        <div [ngClass]="{'available-p': donorInfo?.availableForDonation==true,'not-available-p':donorInfo?.availableForDonation==false}">
             <ion-avatar>
                 <img class="user_img" src="assets/icon/{{donorInfo?.gender}}.png" />
             </ion-avatar>
@@ -25,6 +24,7 @@
             <div>
                 <span class="text-bold color-red font-size19">{{donorInfo?.bloodGroup}}</span>
             </div>
+            <div class="sub_address">{{userInfo.address.state}} {{userInfo.address.pincode}}</div>
         </div>
         <!-- <ion-button fill="transparent" (click)="onClick()">
             <ion-icon class="forward-arrow" name="chevron-forward-outline"></ion-icon>

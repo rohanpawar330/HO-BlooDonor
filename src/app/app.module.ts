@@ -16,6 +16,7 @@ import { AuthGuardGuard } from './guard/auth-guard.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,4 +27,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthGuardGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(){
+
+  }
+
+ 
+}
