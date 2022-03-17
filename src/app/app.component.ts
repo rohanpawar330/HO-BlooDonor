@@ -52,7 +52,7 @@ export class AppComponent {
       this.logout();
     }
     // console.log("menuDetails",menuDetails);
-    this.router.navigateByUrl(menuDetails.url)
+    this.router.navigate(['/' + menuDetails.url])
   }
   logout() {
     this.loadingController.create({

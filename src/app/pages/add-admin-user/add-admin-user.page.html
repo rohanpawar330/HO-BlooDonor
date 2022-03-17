@@ -14,19 +14,20 @@
     <form [formGroup]="addAdminUser" (ngSubmit)="submit()">
         <ion-item>
             <ion-icon class="call_icon" name="person"></ion-icon>
-            <ion-input placeholder="Name" formControlName="Name"></ion-input>
+            <ion-input placeholder="Name" formControlName="name"></ion-input>
         </ion-item>
-        <span class="required" *ngIf="addAdminUser.get('Name').touched && addAdminUser.get('Name').hasError('required')&& addAdminUser.get('Name').valid ">*Required Field</span>
+        <span class="required" *ngIf="addAdminUser.get('name').touched && addAdminUser.get('name').invalid ">*Required Field</span>
         <ion-item>
             <ion-icon class="call_icon" name="call"></ion-icon>
             <ion-input type="number" placeholder="Mobile No." formControlName="mobileNo"></ion-input>
         </ion-item>
-        <span class="required" *ngIf="addAdminUser.get('mobileNo').touched && addAdminUser.get('mobileNo').hasError('required')&& addAdminUser.get('mobileNo').valid ">*Required Field</span>
 
-        <div class="btn_add_delete">
-            <ion-button shape="round" color="light" (click)="addAdminDetails()"> Add</ion-button>
-            <ion-button shape="round" color="light"> Delete</ion-button>
-            <ion-button shape="round" color="light"> Update </ion-button>
+        <span class="required" *ngIf="addAdminUser.get('mobileNo').invalid && addAdminUser.get('mobileNo').touched ">*Please enter valid Mobile Number!</span>
+
+        <div class="add_btn">
+            <ion-button shape="round" color="light" (click)="addAdminDetails()" type="submit" [disabled]="!addAdminUser.valid">
+                <ion-icon class="call_icon" name="add"></ion-icon>
+                Add</ion-button>
         </div>
     </form>
 </ion-content>

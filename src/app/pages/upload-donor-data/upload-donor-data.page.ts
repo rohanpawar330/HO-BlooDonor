@@ -51,7 +51,8 @@ export class UploadDonorDataPage implements OnInit {
     if (dateArrayDDMMYYYY[1] < 10 && dateArrayDDMMYYYY[1].length < 2)
       dateArrayDDMMYYYY[1] = '0' + dateArrayDDMMYYYY[1]
     console.log(dateArrayDDMMYYYY)
-    return (dateofDonation).split("/").reverse().join("-").concat("T00:00:00.000Z")
+    // return (dateofDonation).split("/").reverse().join("-").concat("T00:00:00.000Z")
+    return dateArrayDDMMYYYY.reverse().join("-").concat("T00:00:00.000Z")
   }
 
 }

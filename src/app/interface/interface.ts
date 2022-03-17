@@ -40,6 +40,7 @@ export interface AdminI {
 }
 
 export interface AdminDetailI {
+  id?: string;
   mobileNo: number;
-  name:string;
+  name: string;
 }

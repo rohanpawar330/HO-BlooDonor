@@ -1,21 +1,7 @@
-// .hacking-datetime {
-//     display: grid;
-//     grid-template-columns: 1fr 2fr;
-//     position: absolute;
-//     bottom: 0;
-//     width: 100%;
-// }
 ion-label {
     color: gray !important;
 }
 
-// .hacking-datetime {
-//     display: grid;
-//     grid-template-columns: 1fr 2fr;
-//     position: absolute;
-//     bottom: 0;
-//     width: 100%;
-// }
 .main_container {
     padding: 25px;
     // background-color: red;
@@ -54,7 +40,7 @@ ion-item {
     align-items: center;
     justify-content: space-around;
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .person_icon {
@@ -65,8 +51,8 @@ ion-item {
 }
 
 .submit-cancel_btn {
-    font-size: 19px;
-    font-family: "Roboto";
+    font-size: 15px;
+    // font-family: "Roboto";
     display: flex;
     align-items: center;
     justify-content: center;

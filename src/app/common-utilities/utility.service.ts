@@ -4,14 +4,14 @@ import { Clipboard } from '@capacitor/clipboard';
 import { Storage } from '@capacitor/storage';
 import { DataToSaveI } from '../interface/interface';
 import moment from 'moment';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
 
-  constructor(private loadingController: LoadingController, private alertController: AlertController) { }
+  constructor(private loadingController: LoadingController, private alertController: AlertController, private toastCtrl: ToastController) { }
 
   // chcek donor available for donation
   _availableForDonation(dateOfDonation, userGender) {
@@ -102,16 +102,24 @@ export class UtilityService {
     alert.present();
   }
 
-  async _confirmationAlert(header, subHeader, message) {
+  async _confirmationAlert(header, message, subHeader?) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: header,
       subHeader: subHeader,
       mode: 'ios',
       message: message,
-      buttons: ['Cancel', 'Accept']
+      buttons: ['Ok']
     });
 
     alert.present();
+  }
+
+  async _toastMsg(msg) {
+    const toast = await this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present()
   }
 }

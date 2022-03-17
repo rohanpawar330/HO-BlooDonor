@@ -3,10 +3,13 @@ ion-item {
 }
 
 .call_icon {
-    padding-right: 10px;
+    // padding-right: 10px;
     height: 20px;
-    width: 25px;
+    // width: 25px;
     color: black;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .required {
@@ -20,7 +23,7 @@ ion-item {
     padding-bottom: 15px;
 }
 
-.btn_add_delete {
+.add_btn {
     display: flex;
     align-items: center;
     justify-content: space-around;

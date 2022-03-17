@@ -17,10 +17,24 @@ export class AuthUserService {
     return usersRef;
   }
 
+
   addAdmin(user: AdminDetailI) {
+    console.log("details", user);
     const usersRef = collection(this.firestore, firebaseAPI.AUTH_USER);
+    console.log("userRef", usersRef);
+
     return addDoc(usersRef, user);
-    
+
+  }
+
+  deleteAdmin(user: AdminDetailI) {
+    const adminDocRef = doc(this.firestore, `${firebaseAPI.AUTH_USER}/${user.id}`);
+    return deleteDoc(adminDocRef);
+  }
+
+  getAdminList(): Observable<AdminDetailI[]> {
+    const usersRef = collection(this.firestore, firebaseAPI.AUTH_USER);
+    return collectionData(usersRef, { idField: 'id' }) as Observable<AdminDetailI[]>;
   }
 
 }
