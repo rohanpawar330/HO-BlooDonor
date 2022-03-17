@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtilityService } from 'src/app/common-utilities/utility.service';
 import { AuthUserService } from 'src/app/services/auth-user.service';
@@ -10,22 +11,33 @@ import { AuthUserService } from 'src/app/services/auth-user.service';
 })
 export class PhoneAuthPage implements OnInit {
   phoneNumber: string;
-  constructor(private authService: AuthUserService, private utility: UtilityService, private router: Router) {
+  loginForm: FormGroup;
+  phoneRegex: RegExp = /^((\\+91-?)|0)?[0-9]{10}$/;
+
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthUserService, private utility: UtilityService, private router: Router) {
   }
 
   ngOnInit() {
+    this.loginInitForm();
   }
 
+  loginInitForm() {
+    this.loginForm = this.formBuilder.group({
+      phNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
+    })
+  }
   authenticateUser() {
     this.utility._showLoader();
-    var phNo = parseInt((<HTMLInputElement>document.getElementById("phoneNumber")).value);
+    var phNo = this.loginForm.value.phNo;
+    console.log(phNo)
     this.authService._authUser(phNo).subscribe(data => {
       console.log(data);
       this.utility._hideLoader();
       if (data.length > 0) {
         if (data[0].mobileNo == phNo) {
-          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: data[0].name } });
-          this.router.navigate(['/home'])
+          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: 'Rohan Pawar' } });
+          this.router.navigate(['home'])
         }
       } else {
         this.utility._errorAlert("You're not the Admin", 'Invalid credentials!');
@@ -35,12 +47,6 @@ export class PhoneAuthPage implements OnInit {
       this.utility._hideLoader();
       this.utility._errorAlert("You're not the Admin", 'Invalid credentials!');
     })
-    //     firebase.auth().signInWithPhoneNumber(phNo, this.recaptchaVerifier).then(result => {
-    //  this.phoneNumber = phNo;
-    //  this.otpSent = true;
-    //  this.confirmationResult = result;
-    //  }).catch(err => {
-    //  alert(err);
-    //  })
+
   }
 }

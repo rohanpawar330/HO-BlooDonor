@@ -83,7 +83,7 @@
     <ion-icon name="save" slot="start"></ion-icon>
     Update
   </ion-button>
-  <ion-button expand="block" color="danger" (click)="deleteNote()">
+  <ion-button expand="block" color="primary" (click)="deleteNote()">
     <ion-icon name="trash" slot="start"></ion-icon>
     Delete
   </ion-button> -->
@@ -92,9 +92,9 @@
     <div class="update-details">
         <span *ngIf="userDetail?.updateDetails?.adminName">Last updated by :
       {{userDetail?.updateDetails?.adminName}}</span>
-        <span *ngIf="userDetail?.updateDetails?.mobileNo">MobileNo :
+    <!-- <span *ngIf="userDetail?.updateDetails?.mobileNo">MobileNo :
       {{userDetail?.updateDetails?.mobileNo.toString().slice(0,
-      5)+'XXXXX'}}</span>
-        <span *ngIf="userDetail?.updateDetails?.onDate">on : {{userDetail?.updateDetails?.onDate }}</span>
-    </div>
+      5)+'XXXXX'}}</span> -->
+    <span *ngIf="userDetail?.updateDetails?.onDate">on : {{userDetail?.updateDetails?.onDate }}</span>
+  </div>
 </ion-content>

@@ -5,7 +5,6 @@
         "donationType": null,
         "availableForDonation": true,
         "address": {
-            "pincode": 410101,
             "area": "ABC",
             "city": "jbp",
             "state": "MP"
@@ -22,8 +21,7 @@
         "address": {
             "city": "banaras",
             "state": "UP",
-            "area": "ABC",
-            "pincode": 410101
+            "area": "ABC"
         },
         "donationType": null,
         "availableForDonation": false,
@@ -41,7 +39,6 @@
         "gender": "Male",
         "mobileNo": 2342342344,
         "address": {
-            "pincode": 410101,
             "area": "ABC",
             "state": "MP",
             "city": "sihora"
@@ -63,7 +60,6 @@
         "gender": "Male",
         "address": {
             "state": "MP",
-            "pincode": 410101,
             "area": "ABC",
             "city": "Indore"
         },
@@ -77,7 +73,6 @@
         "firstName": "Kanni",
         "address": {
             "city": "Jbp",
-            "pincode": 482005,
             "area": "Ranjhi",
             "state": "MP"
         },
@@ -96,7 +91,6 @@
         "mobileNo": 8898234234,
         "lastName": "Rathi",
         "address": {
-            "pincode": 410101,
             "area": "ABC",
             "city": "Indore",
             "state": "MP"
@@ -114,8 +108,7 @@
         "address": {
             "state": "MP",
             "area": "ABC",
-            "city": "Indore",
-            "pincode": 410101
+            "city": "Indore"
         },
         "dateOfDonation": "2022-02-09T00:00:00Z",
         "mobileNo": 2312121111,
@@ -134,7 +127,6 @@
         "donationType": null,
         "address": {
             "state": "MP",
-            "pincode": 410101,
             "city": "katni",
             "area": "ABC"
         },
@@ -148,7 +140,6 @@
         "bloodGroup": "O+",
         "address": {
             "city": "chhindwara",
-            "pincode": 410101,
             "state": "MP",
             "area": "Saori"
         },
@@ -174,8 +165,7 @@
         "address": {
             "city": "banaras",
             "area": "Ranjhi",
-            "state": "UP",
-            "pincode": 482005
+            "state": "UP"
         },
         "id": "schjYgtOc34SBKq8ktSZ"
     },
@@ -184,7 +174,6 @@
         "dateOfDonation": "2021-08-12T00:00:00Z",
         "address": {
             "area": "ABC",
-            "pincode": 410101,
             "state": "MP",
             "city": "jbp"
         },
@@ -207,7 +196,6 @@
         "address": {
             "area": "ABC",
             "city": "banaras",
-            "pincode": 410101,
             "state": "UP"
         },
         "gender": "Male",
@@ -221,8 +209,7 @@
         "address": {
             "city": "Indore",
             "state": "MP",
-            "area": "vijay nagar",
-            "pincode": 410101
+            "area": "vijay nagar"
         },
         "firstName": "Shahreen",
         "mobileNo": 8923849283,
@@ -236,7 +223,6 @@
     {
         "bloodGroup": "A+",
         "address": {
-            "pincode": 482005,
             "area": "Ranjhi",
             "state": "MP",
             "city": "jbp"

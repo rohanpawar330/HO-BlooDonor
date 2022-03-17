@@ -4,8 +4,18 @@ export const gender = {
 }
 
 export const totalDayDonation = {
-    maleDay: 90,
-    femaleDay: 120
+    blood: {
+        maleDay: 90,
+        femaleDay: 120
+    },
+    platelets: {
+        maleDay: 30,
+        femaleDay: 40
+    },
+    plasma: {
+        maleDay: 10,
+        femaleDay: 20
+    },
 }
 
 export const userDetailInput = [
@@ -63,11 +73,6 @@ export const userDetailInput = [
         name: 'state',
         placeholder: 'state',
         type: 'text'
-    },
-    {
-        name: 'pincode',
-        placeholder: 'pincode',
-        type: 'text'
     }
 ]
 
@@ -85,7 +90,6 @@ export const USER_DETAIL = {
         city: '',
         area: '',
         state: '',
-        pincode: null,
     }
 };
 
@@ -100,3 +104,9 @@ export const BLOOD_GROUP =
         { bG: 'AB+', isChecked: false },
         { bG: 'AB-', isChecked: false }
     ];
+
+export const DONATION_TYPE = {
+    blood: "Blood",
+    platelets: "Platelets",
+    plasma: "Plasma"
+}

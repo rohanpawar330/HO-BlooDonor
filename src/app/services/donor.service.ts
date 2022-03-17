@@ -49,7 +49,6 @@ export class DonorService {
         city: donor.address.city,
         area: donor.address.area,
         state: donor.address.state,
-        pincode: donor.address.pincode,
       }
     });
   }

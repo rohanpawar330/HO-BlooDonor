@@ -29,12 +29,11 @@ export class UploadDonorDataPage implements OnInit {
         dateOfDonation: this._manuplateDate(userData.dateOfDonation),
         bloodGroup: userData.bloodGroup,
         donationType: userData.donationType,
-        availableForDonation: this.utility._availableForDonation(userData.dateOfDonation, userData.gender).availableForDonation,
+        availableForDonation: this.utility._availableForDonation(userData.dateOfDonation, userData.gender, userData.donationType).availableForDonation,
         address: {
           city: userData.city,
           area: userData.area,
           state: userData.state,
-          pincode: userData.pincode,
         }
       }
       console.log(data)

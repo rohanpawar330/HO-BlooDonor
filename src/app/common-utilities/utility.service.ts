@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { gender, totalDayDonation } from './constant';
+import { DONATION_TYPE, gender, totalDayDonation } from './constant';
 import { Clipboard } from '@capacitor/clipboard';
 import { Storage } from '@capacitor/storage';
 import { DataToSaveI } from '../interface/interface';
@@ -14,30 +14,101 @@ export class UtilityService {
   constructor(private loadingController: LoadingController, private alertController: AlertController, private toastCtrl: ToastController) { }
 
   // chcek donor available for donation
-  _availableForDonation(dateOfDonation, userGender) {
+  _availableForDonation(dateOfDonation, userGender, dontationType?) {
     var todayDate = moment().toDate();
     var lastDonationDate = dateOfDonation;
+    var dataToSend;
     if (lastDonationDate) {
-
       var diffInDays = -(moment(lastDonationDate).diff(moment(todayDate, "DD/MM/YYYY"), 'days') + 1)
-      if (userGender == gender.male) {
-        return diffInDays > totalDayDonation.maleDay ? {
-          availableForDonation: true,
-          daysRemain: diffInDays
-        } : {
-          availableForDonation: false,
-          daysRemain: diffInDays
-        }
-      } else {
-        return diffInDays > totalDayDonation.femaleDay ? {
-          availableForDonation: true,
-          daysRemain: diffInDays
-        } : {
-          availableForDonation: false,
-          daysRemain: diffInDays
-        }
+      switch (dontationType) {
+        // **********for blood***************
+        case DONATION_TYPE.blood:
+          console.log(dontationType, DONATION_TYPE.blood)
+          if (userGender == gender.male) {
+            dataToSend = diffInDays > totalDayDonation.blood.maleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          } else {
+            dataToSend = diffInDays > totalDayDonation.blood.femaleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          }
+          break;
+        // **********for plasma***************
+        case DONATION_TYPE.plasma:
+          console.log(dontationType, DONATION_TYPE.plasma)
+          if (userGender == gender.male) {
+            dataToSend = diffInDays > totalDayDonation.plasma.maleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          } else {
+            dataToSend = diffInDays > totalDayDonation.plasma.femaleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          }
+          break;
+        // **********for platelets***************
+        case DONATION_TYPE.platelets:
+          console.log(dontationType, DONATION_TYPE.platelets)
+          if (userGender == gender.male) {
+            dataToSend = diffInDays > totalDayDonation.platelets.maleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          } else {
+            dataToSend = diffInDays > totalDayDonation.platelets.femaleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          }
+          break;
+        default:
+          console.log(dontationType, "default")
+          if (userGender == gender.male) {
+            dataToSend = diffInDays > totalDayDonation.blood.maleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          } else {
+            dataToSend = diffInDays > totalDayDonation.blood.femaleDay ? {
+              availableForDonation: true,
+              daysRemain: diffInDays
+            } : {
+              availableForDonation: false,
+              daysRemain: diffInDays
+            }
+          }
+          break;
       }
+
+      return dataToSend
     }
+
     return {
       availableForDonation: true,
       daysRemain: diffInDays
