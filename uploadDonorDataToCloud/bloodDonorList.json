@@ -11,7 +11,6 @@
         "city": "jbp",
         "area": "Ranjhi",
         "state": "MP",
-        "pincode": 482005,
         "donationType": null
     },
     {
@@ -26,7 +25,6 @@
         "city": "banaras",
         "area": "Ranjhi",
         "state": "UP",
-        "pincode": 482005,
         "donationType": null
     },
     {
@@ -41,7 +39,6 @@
         "city": "Jbp",
         "area": "Ranjhi",
         "state": "MP",
-        "pincode": 482005,
         "donationType": null
     },
     {
@@ -56,7 +53,6 @@
         "city": "Indore",
         "area": "vijay nagar",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -71,7 +67,6 @@
         "city": "katni",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -86,7 +81,6 @@
         "city": "sihora",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -101,7 +95,6 @@
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -116,7 +109,6 @@
         "city": "chhindwara",
         "area": "Saori",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -131,7 +123,6 @@
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -146,7 +137,6 @@
         "city": "Indore",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -161,7 +151,6 @@
         "city": "jbp",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -176,7 +165,6 @@
         "city": "jbp",
         "area": "ABC",
         "state": "MP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -191,7 +179,6 @@
         "city": "banaras",
         "area": "ABC",
         "state": "UP",
-        "pincode": 410101,
         "donationType": null
     },
     {
@@ -206,7 +193,6 @@
         "city": "banaras",
         "area": "ABC",
         "state": "UP",
-        "pincode": 410101,
         "donationType": null
     }
 ]

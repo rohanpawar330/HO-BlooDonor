@@ -11,8 +11,9 @@ import { AddDonorModal } from '../../modals/add-donor-modal/add-donor-modal.comp
 import { UtilityService } from 'src/app/common-utilities/utility.service';
 import dummyJson from '../../../dummyData/dummyData.json';
 import { BLOOD_GROUP } from 'src/app/common-utilities/constant';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import moment from 'moment';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,10 @@ export class HomePage {
   selectedSegment: string = 'available';
   bloodGroupList = BLOOD_GROUP
   selectedBG = ''
+  options: AnimationOptions = {
+    path: 'assets/bloodBottle.json'
+  }
+  showLoading: boolean = true
 
   constructor(private utility: UtilityService, private router: Router, private donorService: DonorService, private cd: ChangeDetectorRef, private alertCtrl: AlertController, private modalCtrl: ModalController, private datepipe: DatePipe, private routerOutLet: IonRouterOutlet, private menuController: MenuController) {
     //  code for sapearte service call
@@ -74,10 +79,10 @@ export class HomePage {
 
   ngOnInit() {
     // *** working ****
-    this.utility._showLoader();
-    this.donorService.getDonorsList().subscribe((res: any) => {
+    // this.utility._showLoader();
+    this.donorService.getDonorsList().pipe(take(2)).subscribe((res: any) => {
       res.map(data =>
-        data.availableForDonation = this.utility._availableForDonation(data.dateOfDonation, data.gender).availableForDonation
+        data.availableForDonation = this.utility._availableForDonation(data.dateOfDonation, data.gender, data.donationType).availableForDonation
       )
       this.allDonors = res;
       this.availableDonors = res.filter(data => data.availableForDonation == true)
@@ -86,11 +91,14 @@ export class HomePage {
       console.log(this.donorDataList)
       console.log(res)
       this.cd.detectChanges();
-      this.utility._hideLoader();
+      setTimeout(() => {
+        this.showLoading = false
+      }, 2000);
     }, err => {
-      this.utility._hideLoader();
+      this.showLoading = false
       this.utility._errorAlert();
     });
+
   }
 
   async addDonar() {

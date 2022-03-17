@@ -18,7 +18,6 @@ export interface UserDetailsI {
     city: string;
     area: string;
     state: string;
-    pincode: number;
   }
 }
 

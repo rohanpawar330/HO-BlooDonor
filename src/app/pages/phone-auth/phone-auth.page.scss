@@ -1,0 +1,24 @@
+.bg-img {
+    background: url(/assets/HO-hold.png) no-repeat center top;
+}
+.mobile-no {
+    box-shadow: rgb(50 50 93 / 25%) 0px 13px 27px -5px, rgb(0 0 0 / 30%) 0px 8px 16px -8px;
+    border-radius: 20px;
+}
+
+.position-mobile {
+    padding-top: 105%;
+}
+
+ion-button {
+    height: 45px;
+    margin-top: 30px;
+    --box-shadow: rgb(0 0 0 / 25%) 0px 14px 28px, rgb(0 0 0 / 22%) 0px 10px 10px;
+}
+.phone-no-label {
+    color: darkgray;
+    margin-top: 10%;
+}
+.bg-white {
+    background: white;
+}

@@ -5,7 +5,6 @@ import { AuthGuardGuard } from './guard/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'img-upload',
     redirectTo: 'phone-auth',
     pathMatch: 'full'
   },
@@ -28,12 +27,25 @@ const routes: Routes = [
   },
   {
     path: 'add-admin-user',
-    loadChildren: () => import('./pages/add-admin-user/add-admin-user.module').then( m => m.AddAdminUserPageModule)
+    loadChildren: () => import('./pages/add-admin-user/add-admin-user.module').then(m => m.AddAdminUserPageModule),
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'admin-details',
-    loadChildren: () => import('./pages/admin-details/admin-details.module').then( m => m.AdminDetailsPageModule)
+    loadChildren: () => import('./pages/admin-details/admin-details.module').then(m => m.AdminDetailsPageModule),
+    canActivate: [AuthGuardGuard]
   },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsPageModule),
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'about-techassembler',
+    loadChildren: () => import('./pages/about-techassembler/about-techassembler.module').then(m => m.AboutTechassemblerPageModule),
+    canActivate: [AuthGuardGuard]
+  }
+
 
 
 ];

@@ -12,7 +12,12 @@ import { AddDonorModal } from '../../modals/add-donor-modal/add-donor-modal.comp
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedComponentsModule } from 'src/app/sharedComponents/shared-components.module';
+import player from "lottie-web";
+import { LottieModule } from "ngx-lottie";
 
+export function playerFactory() {
+  return player
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +28,7 @@ import { SharedComponentsModule } from 'src/app/sharedComponents/shared-componen
     MatFormFieldModule,
     MatButtonModule,
     SharedComponentsModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   declarations: [HomePage, UpdateDeleteModal, AddDonorModal],
   providers: [DatePipe]

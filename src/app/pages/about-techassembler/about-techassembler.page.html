@@ -1,0 +1,69 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" (click)="onMenuClick()" fill="clear">
+      <ion-icon color="danger" slot="icon-only" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>About TechAssembler</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-button (click)="onMenuClick()" fill="clear">
+    <ion-icon color="danger" slot="icon-only" name="menu"></ion-icon>
+  </ion-button>
+
+  <div class="padding30">About <span class="techassembler">TechAssembler</span></div>
+
+
+  <div class="lottie-cont">
+    <ng-lottie [options]="options">
+
+    </ng-lottie>
+  </div>
+
+  <div class="team-cont">
+    <p class="we">We Build, Teach, Deliver...</p>
+    <p>We commit people, capital and ideas to help our clients, shareholders and the communities
+    </p>
+    <div>we serve to grow.</div>
+    <p>TechAssembler offers Website Designing, Development, Mobile Application Development, Cloud Services
+      Integrations and Coach People about technologies....</p>
+    <!-- <hr> -->
+    <ion-card mode="ios">
+      <div class="ion-padding-vertical">
+        <div class="team">Team :</div>
+        <span class="flex-al">
+          <span>
+            <ion-router-link href="https://www.linkedin.com/in/shahreen-shaikh-53653a172/">Shahreen Shaikh
+            </ion-router-link>
+          </span>
+          <span>
+            <ion-router-link href="https://www.linkedin.com/in/kanika-kohli-05/">Kanika Kohli</ion-router-link>
+          </span>
+          <span>
+            <ion-router-link href="https://www.linkedin.com/in/aman-singh-3a7b9154/">Aman Singh</ion-router-link>
+          </span>
+          <span>
+            <ion-router-link href="https://www.linkedin.com/in/rohan-pawar-791a62115/">Rohan Pawar</ion-router-link>
+          </span>
+        </span>
+      </div>
+    </ion-card>
+    <div class="ion-margin-top">
+      Follow us on:
+      <span class="center padding-top5">
+        <ion-icon color="primary" name="logo-youtube"></ion-icon>: <ion-router-link
+          href="https://www.youtube.com/c/techassembler">
+          TechAssembler <ion-icon name="return-up-forward"></ion-icon>
+        </ion-router-link>
+      </span>
+    </div>
+    <div class="ion-margin-top">
+      Contact us on:
+      <span class="center padding-top5">
+        <ion-icon color="success" name="call"></ion-icon>&nbsp; 7898630235/9039550330
+      </span>
+    </div>
+  </div>
+
+</ion-content>

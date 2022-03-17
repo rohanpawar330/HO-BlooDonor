@@ -70,11 +70,11 @@ ion-title {
 }
 
 .bG-color {
-    --background: red;
+    --background: #fe6a6a;
 }
 .activeColor {
     color: white;
-    --background: #593f8d;
+    --background: red;
 }
 .toggle-button > div:first-child > button {
     border-radius: 22px 0 0 22px;
@@ -88,4 +88,16 @@ ion-title {
     color: black;
     background: #b8bbbf;
 }
-
+.overlay {
+    position: absolute;
+    z-index: 9999;
+    background: #efbababf;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.lottie-cont {
+    height: 200px;
+    margin-top: 25%;
+}

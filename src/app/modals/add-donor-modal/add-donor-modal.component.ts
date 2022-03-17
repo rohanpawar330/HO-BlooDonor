@@ -42,7 +42,7 @@ export class AddDonorModal implements OnInit {
       // gender: new FormControl(''),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
       age: new FormControl('', Validators.compose([Validators.required, Validators.min(18), Validators.max(40)])),
-      dateOfDonation: new FormControl('',Validators.required),
+      dateOfDonation: new FormControl('', Validators.required),
       // donationType: new FormControl(''),
       // bloodGroup: new FormControl('', Validators.required),
       availableForDonation: new FormControl(''),
@@ -62,7 +62,7 @@ export class AddDonorModal implements OnInit {
 
   submit() {
     console.log(this.userDetail)
-    // if (this.userDetail.gender && this.userDetail.bloodGroup) {
+    if (this.userDetail.gender && this.userDetail.bloodGroup) {
 
       this.utility._showLoader();
       this.donorService.addDonor({
@@ -79,7 +79,6 @@ export class AddDonorModal implements OnInit {
           city: this.userDetail.address.city,
           area: this.userDetail.address.area,
           state: this.userDetail.address.state,
-          pincode: this.userDetail.address.pincode,
         }
       }).then(() => {
         this.utility._hideLoader();
@@ -88,9 +87,9 @@ export class AddDonorModal implements OnInit {
         this.utility._hideLoader();
         this.utility._errorAlert();
       });;
-    // } else {
-    //   this.utility._confirmationAlert('Empty Fields!', 'Please fill all the required fields')
-    // }
+    } else {
+      this.utility._confirmationAlert('Empty Fields!', 'Please fill all the required fields')
+    }
 
     // console.log(form)
   }

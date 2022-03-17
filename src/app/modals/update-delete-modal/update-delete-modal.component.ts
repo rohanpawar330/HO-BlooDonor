@@ -89,7 +89,7 @@ export class UpdateDeleteModal implements OnInit {
       adminDetails = JSON.parse(adminData.value);
     })
     adminDetails.onDate = moment().format("DD/MM/YYYY");
-    this.userDetail.availableForDonation = this.utility._availableForDonation(this.userDetail.dateOfDonation, this.userDetail.gender).availableForDonation;
+    this.userDetail.availableForDonation = this.utility._availableForDonation(this.userDetail.dateOfDonation, this.userDetail.gender, this.userDetail.donationType).availableForDonation;
     console.log(adminDetails);
     this.userDetail.updateDetails = adminDetails
     this.utility._showLoader();
