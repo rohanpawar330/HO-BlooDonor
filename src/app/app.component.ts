@@ -13,6 +13,8 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home', icon: 'home' },
     { title: 'Add Admin', url: '/admin-details', icon: 'person' },
+    { title: 'About HO', url: '/about-us', icon: 'people' },
+    { title: 'About TechAssembler', url: '/about-techassembler', icon: 'build' },
     { title: 'LogOut', url: '/phone-auth', icon: 'log-out' },
   ];
   private loading;

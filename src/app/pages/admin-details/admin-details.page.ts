@@ -17,7 +17,7 @@ export class AdminDetailsPage implements OnInit {
   rootUser: boolean = false
 
 
-  constructor(private alertController: AlertController,private menuController:MenuController, private router: Router, private modalCtrl: ModalController, private navCtrl: NavController, private utility: UtilityService, private authService: AuthUserService, private cd: ChangeDetectorRef) {
+  constructor(private alertController: AlertController, private menuController: MenuController, private router: Router, private modalCtrl: ModalController, private navCtrl: NavController, private utility: UtilityService, private authService: AuthUserService, private cd: ChangeDetectorRef) {
 
   }
 
@@ -26,7 +26,7 @@ export class AdminDetailsPage implements OnInit {
     this.utility._getStorage('admin').then((data) => {
       console.log(JSON.parse(data.value))
       let rootUserData = JSON.parse(data.value);
-      if (rootUserData.rootUser) {
+      if (rootUserData && rootUserData.rootUser) {
         this.rootUser = rootUserData.rootUser;
       }
     });

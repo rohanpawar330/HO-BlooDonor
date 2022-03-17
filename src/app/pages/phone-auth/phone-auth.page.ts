@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 import { UtilityService } from 'src/app/common-utilities/utility.service';
 import { AuthUserService } from 'src/app/services/auth-user.service';
 
@@ -31,7 +32,7 @@ export class PhoneAuthPage implements OnInit {
     this.utility._showLoader();
     var phNo = this.loginForm.value.phNo;
     console.log(phNo)
-    this.authService._authUser(phNo).subscribe(data => {
+    this.authService._authUser(phNo).pipe(take(3)).subscribe(data => {
       console.log(data);
       this.utility._hideLoader();
       if (data.length > 0) {

@@ -5,7 +5,6 @@ import { AuthGuardGuard } from './guard/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'img-upload',
     redirectTo: 'phone-auth',
     pathMatch: 'full'
   },
@@ -27,18 +26,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/upload-donor-data/upload-donor-data.module').then(m => m.UploadDonorDataPageModule)
   },
   {
-<<<<<<< HEAD
     path: 'add-admin-user',
-    loadChildren: () => import('./pages/add-admin-user/add-admin-user.module').then( m => m.AddAdminUserPageModule)
+    loadChildren: () => import('./pages/add-admin-user/add-admin-user.module').then(m => m.AddAdminUserPageModule)
   },
   {
     path: 'admin-details',
-    loadChildren: () => import('./pages/admin-details/admin-details.module').then( m => m.AdminDetailsPageModule)
-=======
-    path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
->>>>>>> 221b5a7 (design changes login screen adbout us)
+    loadChildren: () => import('./pages/admin-details/admin-details.module').then(m => m.AdminDetailsPageModule)
+
   },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsPageModule)
+  },
+  {
+    path: 'about-techassembler',
+    loadChildren: () => import('./pages/about-techassembler/about-techassembler.module').then( m => m.AboutTechassemblerPageModule)
+  }
+
 
 
 ];

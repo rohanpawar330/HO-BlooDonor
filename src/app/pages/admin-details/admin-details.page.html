@@ -1,10 +1,10 @@
 <ion-header>
     <ion-toolbar color="danger">
+        <ion-button slot="start" (click)="onMenuClick()" fill="clear">
+            <ion-icon color="light" slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
         <ion-title>
-            <div class="display-flex padding10">
-                <ion-icon class="menuIcon" name="menu" (click)="onMenuClick()"></ion-icon>
-                <div class="titleText"> Admin-details</div>
-            </div>
+            Admin details
         </ion-title>
         <ion-buttons slot="end">
             <ion-button (click)="close()">
@@ -28,8 +28,8 @@
             </div>
             <section>
                 <span class="trash">
-    	<span></span>
-                <i></i>
+                    <span></span>
+                    <i></i>
                 </span>
             </section>
             <ion-item class="ion-no-border">

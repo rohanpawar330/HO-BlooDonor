@@ -12,7 +12,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [scroll-y]="showLoading">
+<ion-content>
 
     <div class="overlay" [hidden]="!showLoading">
         <div class="lottie-cont">
@@ -23,7 +23,8 @@
     </div>
 
     <div class="main_container display-flex">
-        <ion-button class="bG-color" *ngFor="let group of bloodGroupList" (click)="selectedBloodGroup(group)" [ngClass]="{'activeColor': selectedBG == group.bG}">
+        <ion-button class="bG-color" *ngFor="let group of bloodGroupList" (click)="selectedBloodGroup(group)"
+            [ngClass]="{'activeColor': selectedBG == group.bG}">
             <span class="btn_text"> {{group.bG}}</span>
         </ion-button>
     </div>
