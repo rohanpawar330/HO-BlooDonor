@@ -152,11 +152,11 @@ export class UtilityService {
       cssClass: 'my-custom-class',
       message: 'Please wait...',
     });
-    // await loading.present();
+    await loading.present();
   }
 
   async _hideLoader() {
-    // this.loadingController.dismiss();
+    this.loadingController.dismiss();
   }
 
 

@@ -7,14 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { AboutTechassemblerPageRoutingModule } from './about-techassembler-routing.module';
 
 import { AboutTechassemblerPage } from './about-techassembler.page';
+import player from "lottie-web";
+import { LottieModule } from "ngx-lottie";
 
+export function playerFactory() {
+  return player
+}
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AboutTechassemblerPageRoutingModule
+    AboutTechassemblerPageRoutingModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   declarations: [AboutTechassemblerPage]
 })
-export class AboutTechassemblerPageModule {}
+export class AboutTechassemblerPageModule { }

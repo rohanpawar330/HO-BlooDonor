@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-about-techassembler',
@@ -8,6 +9,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class AboutTechassemblerPage implements OnInit {
 
+  options: AnimationOptions = {
+    path: 'assets/build.json'
+  }
   constructor(private menuController: MenuController) { }
   ngOnInit() {
   }
