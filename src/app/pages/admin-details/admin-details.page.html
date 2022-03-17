@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar color="danger">
+        <ion-title>
+            <div class="display-flex padding10">
+                <ion-icon class="menuIcon" name="menu" (click)="onMenuClick()"></ion-icon>
+                <div class="titleText"> Admin-details</div>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="main_container display_flex">
+
+        <ion-card mode="ios" class="main_container" *ngFor="let admin of adminList">
+
+            <div class="trash" (click)="deleteAdmin(admin)">
+                <ion-item [hidden]="rootUser">
+                    <!-- <ion-item [hidden]="!rootUser"> -->
+                    <ion-icon class="hover" slot="end" name="trash"></ion-icon>
+                </ion-item>
+
+            </div>
+            <section>
+                <span class="trash">
+    	<span></span>
+                <i></i>
+                </span>
+            </section>
+            <ion-item class="ion-no-border">
+                <ion-icon class="icon" name="person" slot="start"></ion-icon>
+                <ion-label class="text_container">{{admin?.name}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-icon class="icon" name="call" slot="start"></ion-icon>
+                <ion-label class="text_container">{{admin?.mobileNo.toString().slice(0, 5)+'XXXXX'}}
+                </ion-label>
+            </ion-item>
+
+        </ion-card>
+    </div>
+
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="OpenaddAdminUserModel()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

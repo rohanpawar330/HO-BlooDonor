@@ -36,4 +36,11 @@ export interface QueryDbI {
 export interface AdminI {
   name: string;
   mobileNo: number;
+  value: string;
+}
+
+export interface AdminDetailI {
+  id?: string;
+  mobileNo: number;
+  name: string;
 }

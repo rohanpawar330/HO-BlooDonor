@@ -1,0 +1,30 @@
+ion-item {
+    padding: 15px;
+}
+
+.call_icon {
+    // padding-right: 10px;
+    height: 20px;
+    // width: 25px;
+    color: black;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.required {
+    color: red;
+    font-size: 15px;
+    font-family: Roboto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+    padding-bottom: 15px;
+}
+
+.add_btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -27,8 +27,7 @@ export class AddDonorModal implements OnInit {
   todayDate: any = new Date();
   date = this.todayDate.toISOString();
 
-
-  constructor(private utility: UtilityService, private formBuilder: FormBuilder, private donorService: DonorService, private router: Router, private modalCtrl: ModalController) { }
+  constructor(private formBuilder: FormBuilder, private utility: UtilityService, private donorService: DonorService, private router: Router, private modalCtrl: ModalController) { }
 
 
 
@@ -39,19 +38,19 @@ export class AddDonorModal implements OnInit {
   createDonorForm() {
     this.donorForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
-      lastName: ["", [Validators.required, Validators.pattern("^[a-zA-Z]*$")]],
-      gender: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      // gender: new FormControl(''),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
-      age: new FormControl('', Validators.compose([Validators.required])),
-      dateOfDonation: new FormControl(''),
-      donationType: new FormControl(''),
-      bloodGroup: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.compose([Validators.required, Validators.min(18), Validators.max(40)])),
+      dateOfDonation: new FormControl('',Validators.required),
+      // donationType: new FormControl(''),
+      // bloodGroup: new FormControl('', Validators.required),
       availableForDonation: new FormControl(''),
       address: this.formBuilder.group({
         city: new FormControl('', Validators.required),
-        area: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required),
-        pincode: new FormControl('', Validators.required),
+        area: new FormControl(''),
+        state: new FormControl(''),
+        // pincode: new FormControl('', Validators.required),
       })
 
     });
@@ -63,30 +62,35 @@ export class AddDonorModal implements OnInit {
 
   submit() {
     console.log(this.userDetail)
-    this.utility._showLoader();
-    this.donorService.addDonor({
-      firstName: this.userDetail.firstName,
-      lastName: this.userDetail.lastName,
-      mobileNo: this.userDetail.mobileNo,
-      gender: this.userDetail.gender,
-      age: this.userDetail.age,
-      donationType: this.userDetail.donationType,
-      dateOfDonation: this.userDetail.dateOfDonation,
-      bloodGroup: this.userDetail.bloodGroup,
-      availableForDonation: this.userDetail.availableForDonation,
-      address: {
-        city: this.userDetail.address.city,
-        area: this.userDetail.address.area,
-        state: this.userDetail.address.state,
-        pincode: this.userDetail.address.pincode,
-      }
-    }).then(() => {
-      this.utility._hideLoader();
-      this.router.navigate['home'];
-    }).catch(() => {
-      this.utility._hideLoader();
-      this.utility._errorAlert();
-    });;
+    // if (this.userDetail.gender && this.userDetail.bloodGroup) {
+
+      this.utility._showLoader();
+      this.donorService.addDonor({
+        firstName: this.userDetail.firstName,
+        lastName: this.userDetail.lastName,
+        mobileNo: this.userDetail.mobileNo,
+        gender: this.userDetail.gender,
+        age: this.userDetail.age,
+        donationType: this.userDetail.donationType,
+        dateOfDonation: this.userDetail.dateOfDonation,
+        bloodGroup: this.userDetail.bloodGroup,
+        availableForDonation: this.userDetail.availableForDonation,
+        address: {
+          city: this.userDetail.address.city,
+          area: this.userDetail.address.area,
+          state: this.userDetail.address.state,
+          pincode: this.userDetail.address.pincode,
+        }
+      }).then(() => {
+        this.utility._hideLoader();
+        this.router.navigate['/home'];
+      }).catch(() => {
+        this.utility._hideLoader();
+        this.utility._errorAlert();
+      });;
+    // } else {
+    //   this.utility._confirmationAlert('Empty Fields!', 'Please fill all the required fields')
+    // }
 
     // console.log(form)
   }

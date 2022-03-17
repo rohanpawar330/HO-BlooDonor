@@ -12,7 +12,7 @@ export class AuthGuardGuard implements CanActivate {
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return this.utility._getStorage('user').then(data => {
+    return this.utility._getStorage('admin').then(data => {
       if (data.value) {
         return true
       } else {

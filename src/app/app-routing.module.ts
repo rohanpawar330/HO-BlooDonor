@@ -5,7 +5,7 @@ import { AuthGuardGuard } from './guard/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: 'upload-donor-data',
+    // redirectTo: 'img-upload',
     redirectTo: 'phone-auth',
     pathMatch: 'full'
   },
@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
-    // canActivate: [AuthGuardGuard]
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'img-upload',
@@ -26,6 +26,15 @@ const routes: Routes = [
     path: 'upload-donor-data',
     loadChildren: () => import('./pages/upload-donor-data/upload-donor-data.module').then(m => m.UploadDonorDataPageModule)
   },
+  {
+    path: 'add-admin-user',
+    loadChildren: () => import('./pages/add-admin-user/add-admin-user.module').then( m => m.AddAdminUserPageModule)
+  },
+  {
+    path: 'admin-details',
+    loadChildren: () => import('./pages/admin-details/admin-details.module').then( m => m.AdminDetailsPageModule)
+  },
+
 
 ];
 

@@ -1,10 +1,59 @@
-.hacking-datetime {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
 ion-label {
     color: gray !important;
+}
+
+.main_container {
+    padding: 25px;
+    // background-color: red;
+    height: 100vh;
+}
+
+// .form_main_container {
+//     // border: 1px solid white;
+//     border-radius: 10px;
+//     padding: 10px;
+// }
+ion-item {
+    // margin-bottom: 10px;
+    // background: red;
+    text-transform: capitalize;
+    // border: 1px solid rgb(231, 69, 69);
+    // border-radius: 30px;
+}
+
+// ion-input {
+//     color: black;
+//     font-size: 20px;
+//     padding-left: 30px;
+//     font-family: 'Roboto';
+//     text-transform: capitalize;
+// }
+.name_icon {
+    margin-right: 5px;
+    width: 25px;
+    height: 20px;
+    color: black;
+}
+
+.btn_submit_cancel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.person_icon {
+    height: 20px;
+    width: 20px;
+    color: black;
+    margin-right: 10px;
+}
+
+.submit-cancel_btn {
+    font-size: 15px;
+    // font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -24,8 +24,8 @@ export class PhoneAuthPage implements OnInit {
       this.utility._hideLoader();
       if (data.length > 0) {
         if (data[0].mobileNo == phNo) {
-          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: 'Rohan Pawar' } });
-          this.router.navigate(['home'])
+          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: data[0].name } });
+          this.router.navigate(['/home'])
         }
       } else {
         this.utility._errorAlert("You're not the Admin", 'Invalid credentials!');
