@@ -6,11 +6,6 @@
         <ion-title>
             Admin details
         </ion-title>
-        <!-- <ion-buttons slot="end">
-            <ion-button (click)="close()">
-                <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons> -->
     </ion-toolbar>
 </ion-header>
 
@@ -20,8 +15,7 @@
         <ion-card mode="ios" class="main_container" *ngFor="let admin of adminList">
 
             <div class="trash" (click)="deleteAdmin(admin)">
-                <ion-item [hidden]="rootUser">
-                    <!-- <ion-item [hidden]="!rootUser"> -->
+                <ion-item [hidden]="!rootUser">
                     <ion-icon class="hover" slot="end" name="trash"></ion-icon>
                 </ion-item>
 
@@ -41,7 +35,7 @@
                 <ion-label class="text_container">{{admin?.mobileNo.toString().slice(0, 5)+'XXXXX'}}
                 </ion-label>
             </ion-item>
-
+            <div class="padding-left10 root-user" *ngIf="admin?.rootUser">* Root User</div>
         </ion-card>
     </div>
 

@@ -28,6 +28,7 @@ export class PhoneAuthPage implements OnInit {
       phNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
     })
   }
+
   authenticateUser() {
     this.utility._showLoader();
     var phNo = this.loginForm.value.phNo;
@@ -37,7 +38,8 @@ export class PhoneAuthPage implements OnInit {
       this.utility._hideLoader();
       if (data.length > 0) {
         if (data[0].mobileNo == phNo) {
-          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: 'Rohan Pawar' } });
+          this.utility._setStorage({ key: 'admin', value: { mobileNo: data[0].mobileNo, adminName: data[0].name, rootUser: data[0].rootUser } });
+          this.loginForm.reset();
           this.router.navigate(['home'])
         }
       } else {
@@ -46,7 +48,7 @@ export class PhoneAuthPage implements OnInit {
 
     }, err => {
       this.utility._hideLoader();
-      this.utility._errorAlert("You're not the Admin", 'Invalid credentials!');
+      this.utility._errorAlert();
     })
 
   }

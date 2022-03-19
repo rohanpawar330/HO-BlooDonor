@@ -193,4 +193,9 @@ export class UtilityService {
     });
     toast.present()
   }
+
+  _log(data, msg = 'data logged', type = 'log') {
+    if (true)
+      console[type](data);
+  }
 }

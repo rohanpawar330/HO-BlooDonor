@@ -42,7 +42,8 @@ export class AddDonorModal implements OnInit {
       // gender: new FormControl(''),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
       age: new FormControl('', Validators.compose([Validators.required, Validators.min(18), Validators.max(40)])),
-      dateOfDonation: new FormControl('', Validators.required),
+      dateOfDonation: new FormControl(''),
+      // , Validators.required
       // donationType: new FormControl(''),
       // bloodGroup: new FormControl('', Validators.required),
       availableForDonation: new FormControl(''),
@@ -82,7 +83,7 @@ export class AddDonorModal implements OnInit {
         }
       }).then(() => {
         this.utility._hideLoader();
-        this.router.navigate['/home'];
+        this._dismiss();
       }).catch(() => {
         this.utility._hideLoader();
         this.utility._errorAlert();
@@ -94,12 +95,10 @@ export class AddDonorModal implements OnInit {
     // console.log(form)
   }
 
-  cancel() { this.router.navigate['home']; }
+  cancel() { this._dismiss(); }
 
   _dismiss() {
-    this.modalCtrl.dismiss({
-      'fromModal': 'Subscribed TechAssembler'
-    });
+    this.modalCtrl.dismiss();
   }
 
   ionDateChange(event) {

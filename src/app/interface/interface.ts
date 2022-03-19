@@ -42,4 +42,5 @@ export interface AdminDetailI {
   id?: string;
   mobileNo: number;
   name: string;
+  rootUser?: boolean;
 }

@@ -1,15 +1,20 @@
 <ion-app>
     <ion-split-pane contentId="id">
         <ion-menu menuId="id" contentId="id" type="overlay">
-            <ion-content color="danger">
+            <ion-content>
+                <div class="bg-img"></div>
                 <ion-list id="inbox-list">
                     <ion-list-header>Blood Donar App</ion-list-header>
-                    <ion-note>blood@donar.com</ion-note>
-
+                    <ion-note class="margin-b-110">humanityorganization.org</ion-note>
+                    <div class="color-red paddig-left10 padding-bottom5">Welcome
+                        <ion-text class="font-size19 text-bold">
+                            {{loggedInUser?.adminName}}
+                        </ion-text>
+                    </div>
                     <ion-menu-toggle auto-hide="false" *ngFor="let menuDetails of appPages; let i = index">
-                        <ion-item (click)="onMenuClick(menuDetails)" color="danger" lines="none" detail="false">
+                        <ion-item (click)="onMenuClick(menuDetails)" lines="none" detail="false">
                             <ion-icon slot="start" [md]="menuDetails.icon + '-sharp'"></ion-icon>
-                            <ion-label>{{ menuDetails.title }}</ion-label>
+                            <ion-label color="primary">{{ menuDetails.title }}</ion-label>
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>
