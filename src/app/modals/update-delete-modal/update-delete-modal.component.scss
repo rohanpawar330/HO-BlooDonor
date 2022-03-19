@@ -13,17 +13,22 @@ ion-label {
     text-align: left !important;
 }
 
-.submit-cancel_btn {
-    font-size: 19px;
-    font-family: "Roboto";
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 ._icon {
     height: 20px;
     width: 20px;
     color: black;
     margin-right: 10px;
+}
+.main_container {
+    padding: 25px;
+}
+
+.btn_submit_cancel {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn_submit_cancel > ion-button {
+    font-size: 16px;
 }

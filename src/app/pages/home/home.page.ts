@@ -14,6 +14,7 @@ import { BLOOD_GROUP } from 'src/app/common-utilities/constant';
 import { map, take } from 'rxjs/operators';
 import moment from 'moment';
 import { AnimationOptions } from 'ngx-lottie';
+import { ShareDataService } from 'src/app/common-utilities/shareData.service';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,7 @@ export class HomePage {
   }
   showLoading: boolean = true
 
-  constructor(private utility: UtilityService, private router: Router, private donorService: DonorService, private cd: ChangeDetectorRef, private alertCtrl: AlertController, private modalCtrl: ModalController, private datepipe: DatePipe, private routerOutLet: IonRouterOutlet, private menuController: MenuController) {
+  constructor(private shareData: ShareDataService, private utility: UtilityService, private router: Router, private donorService: DonorService, private cd: ChangeDetectorRef, private alertCtrl: AlertController, private modalCtrl: ModalController, private datepipe: DatePipe, private routerOutLet: IonRouterOutlet, private menuController: MenuController) {
     //  code for sapearte service call
     // donorService.getDataWhere('availableForDonation', '==', true).subscribe(data => {
     //   this.availableDonors = data;
@@ -78,6 +79,16 @@ export class HomePage {
   }
 
   ngOnInit() {
+
+
+
+  }
+
+  ionViewWillEnter() {
+    this.utility._getStorage('admin').then(data => {
+      this.shareData.emitdata(JSON.parse(data.value));
+    })
+
     // *** working ****
     // this.utility._showLoader();
     this.donorService.getDonorsList().pipe(take(2)).subscribe((res: any) => {
@@ -94,6 +105,9 @@ export class HomePage {
       setTimeout(() => {
         this.showLoading = false
       }, 2000);
+      if (this.donorDataList.availableDonors.length < 0) {
+        this.utility._errorAlert();
+      }
     }, err => {
       this.showLoading = false
       this.utility._errorAlert();

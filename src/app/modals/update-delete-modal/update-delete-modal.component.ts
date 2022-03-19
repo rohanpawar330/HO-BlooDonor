@@ -20,10 +20,19 @@ export class UpdateDeleteModal implements OnInit {
 
   userDetail: UserDetailsI = null;
   getDonorDetail$: any;
+  private rootUser: boolean = false;
+
   constructor(private alertController: AlertController, private utility: UtilityService, private donorService: DonorService, private modalCtrl: ModalController, private toastCtrl: ToastController) {
   }
 
   ngOnInit() {
+    this.utility._getStorage('admin').then((data) => {
+      console.log(JSON.parse(data.value))
+      let rootUserData = JSON.parse(data.value);
+      if (rootUserData && rootUserData.rootUser) {
+        this.rootUser = rootUserData.rootUser;
+      }
+    });
     this.utility._showLoader()
     this.getDonorDetail$ = this.donorService.getDonorById(this.id).subscribe((res: any) => {
       if (res.dateOfDonation)
@@ -84,27 +93,32 @@ export class UpdateDeleteModal implements OnInit {
   }
 
   async updateNote() {
-    let adminDetails;
-    await this.utility._getStorage('admin').then(adminData => {
-      adminDetails = JSON.parse(adminData.value);
-    })
-    adminDetails.onDate = moment().format("DD/MM/YYYY");
-    this.userDetail.availableForDonation = this.utility._availableForDonation(this.userDetail.dateOfDonation, this.userDetail.gender, this.userDetail.donationType).availableForDonation;
-    console.log(adminDetails);
-    this.userDetail.updateDetails = adminDetails
-    this.utility._showLoader();
-    await this.donorService.updateDonorDetail(this.userDetail).then(() => { this.utility._hideLoader() })
-      .catch(() => {
-        this.utility._hideLoader();
-        this.utility._errorAlert();
-      });
-    this.utility._hideLoader();
+    if (this.userDetail.dateOfDonation && this.userDetail.donationType) {
 
-    const toast = await this.toastCtrl.create({
-      message: 'User Detail updated!',
-      duration: 2000
-    });
-    toast.present().then(() => this.dismissModal());
+      let adminDetails;
+      await this.utility._getStorage('admin').then(adminData => {
+        adminDetails = JSON.parse(adminData.value);
+      })
+      adminDetails.onDate = moment().format("DD/MM/YYYY");
+      this.userDetail.availableForDonation = this.utility._availableForDonation(this.userDetail.dateOfDonation, this.userDetail.gender, this.userDetail.donationType).availableForDonation;
+      console.log(adminDetails);
+      this.userDetail.updateDetails = adminDetails
+      this.utility._showLoader();
+      await this.donorService.updateDonorDetail(this.userDetail).then(() => { this.utility._hideLoader() })
+        .catch(() => {
+          this.utility._hideLoader();
+          this.utility._errorAlert();
+        });
+      this.utility._hideLoader();
+
+      const toast = await this.toastCtrl.create({
+        message: 'User Detail updated!',
+        duration: 2000
+      });
+      toast.present().then(() => this.dismissModal());
+    } else {
+      this.utility._confirmationAlert('Empty Fields!', 'Please fill all the required fields')
+    }
 
   }
 

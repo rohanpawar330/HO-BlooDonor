@@ -23,6 +23,7 @@ export class AdminDetailsPage implements OnInit {
 
 
   ngOnInit() {
+
     this.utility._getStorage('admin').then((data) => {
       console.log(JSON.parse(data.value))
       let rootUserData = JSON.parse(data.value);
@@ -34,6 +35,7 @@ export class AdminDetailsPage implements OnInit {
     this.utility._showLoader();
     this.authService.getAdminList().subscribe((res: any) => {
       this.adminList = res
+      console.log(this.adminList)
       this.cd.detectChanges();
       this.utility._hideLoader();
     }, err => {
@@ -41,11 +43,16 @@ export class AdminDetailsPage implements OnInit {
       this.utility._errorAlert();
     });
   }
+
+
   async OpenaddAdminUserModel() {
     const modal = await this.modalCtrl.create({
       component: AddAdminUserPage,
       breakpoints: [0, 0.5, 0.8, 1],
-      initialBreakpoint: 0.8
+      initialBreakpoint: 0.8,
+      componentProps: {
+        'rootUserRec': this.rootUser
+      },
     });
 
     await modal.present();
@@ -54,6 +61,7 @@ export class AdminDetailsPage implements OnInit {
     this.router.navigate(['/home']);
     // this.navCtrl.pop();
   }
+
   async deleteAdmin(adminDetail) {
 
     const alert = await this.alertController.create({

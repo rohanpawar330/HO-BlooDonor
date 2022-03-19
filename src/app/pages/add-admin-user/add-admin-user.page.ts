@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
@@ -13,10 +13,10 @@ import { DonorService } from 'src/app/services/donor.service';
   styleUrls: ['./add-admin-user.page.scss'],
 })
 export class AddAdminUserPage implements OnInit {
+  @Input() rootUserRec;
 
   addAdminUser: FormGroup;
   phoneRegex: RegExp = /^((\\+91-?)|0)?[0-9]{10}$/;
-  user: "";
   data: any;
   constructor(private formBuilder: FormBuilder, private utility: UtilityService, private authService: AuthUserService,
     private donorService: DonorService, private router: Router, private navCtrl: NavController, private modalController: ModalController) { }
@@ -29,6 +29,7 @@ export class AddAdminUserPage implements OnInit {
     this.addAdminUser = this.formBuilder.group({
       name: new FormControl('', Validators.compose([Validators.required])),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
+      rootUser: new FormControl(false),
     });
   }
 
@@ -36,7 +37,12 @@ export class AddAdminUserPage implements OnInit {
     this.modalController.dismiss();
   }
 
+  makeRootUser(event) {
+    this.addAdminUser.value.rootUser = event.detail.checked
+  }
+
   addAdminDetails() {
+
     console.log(this.addAdminUser.value)
     this.authService.addAdmin(this.addAdminUser.value).then(() => {
       this.utility._toastMsg('NewAdmin Added Successfully....')

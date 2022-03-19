@@ -1,242 +1,112 @@
 <ion-header>
-<<<<<<< HEAD
-    <ion-toolbar color="danger">
-        <ion-buttons slot="end">
-            <ion-button (click)="_dismiss()">
-                <ion-icon slot="icon-only" name="close-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-title>Add New Donor</ion-title>
-    </ion-toolbar>
-=======
-  <ion-toolbar color="primary">
+  <ion-toolbar color="danger">
     <ion-buttons slot="end">
-      <ion-button (click)="addDonar()">
-        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
-      </ion-button>
       <ion-button (click)="_dismiss()">
         <ion-icon slot="icon-only" name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>Add New Donor</ion-title>
   </ion-toolbar>
->>>>>>> 221b5a7 (design changes login screen adbout us)
 </ion-header>
 <ion-content>
-
-    <!-- <div>
-    <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input [(ngModel)]="userDetail.firstName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Surname</ion-label>
-      <ion-input [(ngModel)]="userDetail.lastName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Gender</ion-label>
-      <ion-input [(ngModel)]="userDetail.gender"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">mobileNo</ion-label>
-      <ion-input [(ngModel)]="userDetail.mobileNo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">bloodGroup</ion-label>
-      <ion-input [(ngModel)]="userDetail.bloodGroup"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">availableForDonation</ion-label>
-      <ion-input [(ngModel)]="userDetail.availableForDonation"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Donation</ion-label>
-      <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
-      </ion-input>
-      <ion-popover trigger="date" size="cover" #datePopOver>
-        <ng-template>
-          <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" locale="sl-SI"
-            (ionChange)="ionDateChange($event)">
-          </ion-datetime>
-          <ion-button (click)="closeDatePicker()">
-            <ion-icon slot="icon-only" name="close"></ion-icon>
-          </ion-button>
-        </ng-template>
-      </ion-popover>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">age</ion-label>
-      <ion-input [(ngModel)]="userDetail.age"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">city</ion-label>
-      <ion-input [(ngModel)]="userDetail.address.city"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">area</ion-label>
-      <ion-input [(ngModel)]="userDetail.address.area"></ion-input>
-    </ion-item>
-  </div> -->
-    <!-- <form [formGroup]="donorForm" (ngSubmit)="onSubmit(donorForm.value, donorForm.valid)" class="form" novalidate>
-    <mat-form-field class="form-element">
-      <input matInput placeholder="Company Name" formControlName="firstName" />
-      <mat-error *ngIf="firstName.invalid && isSubmitted">
-        <div [hidden]="!firstName.errors.required">
-          Company Name is required
-        </div>
-      </mat-error>
-    </mat-form-field> -->
-
-    <!-- nested form group -->
-    <!-- <table class="full-width" cellspacing="0" formGroupName="address">
-      <span class="fill-remaining-space">Address</span>
-      <tr>
-        <td>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Unit" formControlName="unit" />
-
-            <mat-error *ngIf="unit.invalid && isSubmitted">
-              <div [hidden]="!unit.errors.required">Unit is required</div>
-            </mat-error>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Street" formControlName="street" />
-
-            <mat-error *ngIf="street.invalid && isSubmitted">
-              <div [hidden]="!street.errors.required">Street is required</div>
-            </mat-error>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table> -->
-
-
-
-    <!-- <td>
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Phone" formControlName="phone" />
-              <mat-error *ngIf="contact.controls.phone.invalid && isSubmitted">
-                <div [hidden]="!contact.controls.phone.errors.required">
-                  Phone is required
-                </div>
-                <div [hidden]="!contact.controls.phone.errors.pattern">
-                  Phone is not valid (USE like that 86545333)
-                </div>
-              </mat-error>
-            </mat-form-field>
-          </td> -->
-    <!-- </tr>
-    </table> -->
-    <!-- </div> -->
-
-    <!-- <div class="form-element">
-      <button mat-raised-button color="primary" type="submit" class="button">
-        Submit
-      </button>
-    </div>
-  </form>
-
-  <ng-template #forminfo>
-    <div class="container">
-      {{ post | json }}
-    </div>
-  </ng-template> -->
-
-    <div class="main_container">
-        <form [formGroup]="donorForm" (ngSubmit)="submit()">
-            <ion-item>
-                <ion-label position="floating">Name</ion-label>
-                <ion-input [(ngModel)]="userDetail.firstName" formControlName="firstName"></ion-input>
-            </ion-item>
-            <span class="color-red" *ngIf="donorForm.get('firstName').touched && donorForm.get('firstName').hasError('required')">*Requiured
-              Field</span>
-            <ion-item>
-                <ion-label position="floating">Surname</ion-label>
-                <ion-input [(ngModel)]="userDetail.lastName" formControlName="lastName"></ion-input>
-            </ion-item>
-            <span class="color-red" *ngIf="donorForm.get('lastName').touched && donorForm.get('lastName').hasError('required')">*Requiured
+  <div class="main_container">
+    <form [formGroup]="donorForm" (ngSubmit)="submit()">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="userDetail.firstName" formControlName="firstName"></ion-input>
+      </ion-item>
+      <span class="color-red"
+        *ngIf="donorForm.get('firstName').touched && donorForm.get('firstName').hasError('required')">*Requiured
         Field</span>
-            <ion-item>
-                <ion-label position="floating">Gender</ion-label>
-                <app-gender-selection-option class="width-100" (genderSelected)="_genderSelected($event)">
-                </app-gender-selection-option>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Donation Type</ion-label>
-                <app-donation-selection-option class="width-100" (donationType)="_donationType($event)">
-                </app-donation-selection-option>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">mobileNo</ion-label>
-                <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
-            </ion-item>
-            <span class="color-red" *ngIf="donorForm.get('mobileNo').touched && donorForm.get('mobileNo').invalid">*Please enter valid mobile no.
+      <ion-item>
+        <ion-label position="floating">Surname</ion-label>
+        <ion-input [(ngModel)]="userDetail.lastName" formControlName="lastName"></ion-input>
+      </ion-item>
+      <span class="color-red"
+        *ngIf="donorForm.get('lastName').touched && donorForm.get('lastName').hasError('required')">*Requiured
+        Field</span>
+      <ion-item>
+        <ion-label position="floating">Gender</ion-label>
+        <app-gender-selection-option class="width-100" (genderSelected)="_genderSelected($event)">
+        </app-gender-selection-option>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">bloodGroup</ion-label>
+        <app-bgselect-option class="width-100" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Donation Type</ion-label>
+        <app-donation-selection-option class="width-100" (donationType)="_donationType($event)">
+        </app-donation-selection-option>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Donation Date</ion-label>
+        <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
+        </ion-input>
+        <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
+          <ng-template>
+            <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" formControlName="dateOfDonation"
+              (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+            </ion-datetime>
+            <ion-button (click)="closeDatePicker()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ng-template>
+        </ion-popover>
+      </ion-item>
+      <!-- <span class="color-red"
+        *ngIf="donorForm.get('dateOfDonation').touched && donorForm.get('dateOfDonation').invalid">*Requiured
+        Field</span> -->
+      <ion-item>
+        <ion-label position="floating">mobileNo</ion-label>
+        <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
+      </ion-item>
+      <span class="color-red" *ngIf="donorForm.get('mobileNo').touched && donorForm.get('mobileNo').invalid">*Please
+        enter valid mobile no.
+      </span>
+      <ion-item>
+        <ion-label position="floating">age</ion-label>
+        <ion-input [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
+      </ion-item>
+
+      <span class="color-red" *ngIf="donorForm.get('age').touched && donorForm.get('age').invalid">*Please enter valid
+        age
       </span>
 
-            <ion-item>
-                <ion-label position="floating">bloodGroup</ion-label>
-                <app-bgselect-option class="width-100" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
-            </ion-item>
+      <div formGroupName="address">
+        <ion-item>
+          <ion-label position="floating">city</ion-label>
+          <ion-input [(ngModel)]="userDetail.address.city" formControlName="city"></ion-input>
+        </ion-item>
+        <span class="color-red"
+          *ngIf="donorForm.get('city')?.touched && donorForm.get('city').hasError('required')">*Required field
+        </span>
 
-            <ion-item>
-                <ion-label position="floating">Donation Date</ion-label>
-                <ion-input value="{{ userDetail.dateOfDonation | date: 'dd/MM/yyyy' }}" id="date" class="ion-text-end">
-                </ion-input>
-                <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
-                    <ng-template>
-                        <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" formControlName="dateOfDonation" (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
-                        </ion-datetime>
-                        <ion-button (click)="closeDatePicker()">
-                            <ion-icon slot="icon-only" name="close"></ion-icon>
-                        </ion-button>
-                    </ng-template>
-                </ion-popover>
-            </ion-item>
-            <span class="color-red" *ngIf="donorForm.get('dateOfDonation').touched && donorForm.get('dateOfDonation').invalid">*Requiured
-              Field</span>
-
-            <ion-item>
-                <ion-label position="floating">age</ion-label>
-                <ion-input [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
-            </ion-item>
-
-            <span class="color-red" *ngIf="donorForm.get('age').touched && donorForm.get('age').invalid">*Please enter valid age
-            </span>
-
-            <div formGroupName="address">
-                <ion-item>
-                    <ion-label position="floating">city</ion-label>
-                    <ion-input [(ngModel)]="userDetail.address.city" formControlName="city"></ion-input>
-                </ion-item>
-                <span class="color-red" *ngIf="donorForm.get('city')?.touched && donorForm.get('city').hasError('required')">*Required field
-                </span>
-
-                <ion-item>
-                    <ion-label position="floating">area</ion-label>
-                    <ion-input [(ngModel)]="userDetail.address.area" formControlName="area"></ion-input>
-                </ion-item>
-                <!-- <span class="color-red" *ngIf="donorForm.get('area')?.touched && donorForm.get('area').hasError('required')">*Required field
+        <ion-item>
+          <ion-label position="floating">area</ion-label>
+          <ion-input [(ngModel)]="userDetail.address.area" formControlName="area"></ion-input>
+        </ion-item>
+        <!-- <span class="color-red" *ngIf="donorForm.get('area')?.touched && donorForm.get('area').hasError('required')">*Required field
                   </span> -->
-                <ion-item>
-                    <ion-label position="floating">state</ion-label>
-                    <ion-input [(ngModel)]="userDetail.address.state" formControlName="state"></ion-input>
-                </ion-item>
-                <!-- <span class="color-red" *ngIf="donorForm.get('state')?.touched && donorForm.get('state').hasError('required')">*Required field
+        <ion-item>
+          <ion-label position="floating">state</ion-label>
+          <ion-input [(ngModel)]="userDetail.address.state" formControlName="state"></ion-input>
+        </ion-item>
+        <!-- <span class="color-red" *ngIf="donorForm.get('state')?.touched && donorForm.get('state').hasError('required')">*Required field
                   </span> -->
 
-            </div>
+      </div>
 
-            <div class="btn_submit_cancel">
+      <div class="btn_submit_cancel">
 
-                <ion-button class="submit-cancel_btn" shape="round" color="light" (click)="_dismiss()">
-                    Cancel
-                </ion-button>
-                <ion-button class="submit-cancel_btn" shape="round" color="light" type="submit" [disabled]="!donorForm.valid">
-                    <ion-icon class="person_icon" slot="icon-only" name="person-add"></ion-icon> sbumit
-                </ion-button>
-            </div>
-        </form>
-    </div>
+        <ion-button class="submit-cancel_btn" shape="round" color="light" (click)="_dismiss()">
+          Cancel
+        </ion-button>
+        <ion-button class="submit-cancel_btn" shape="round" color="light" type="submit" [disabled]="!donorForm.valid">
+          <ion-icon class="person_icon" slot="icon-only" name="person-add"></ion-icon> Submit
+        </ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>

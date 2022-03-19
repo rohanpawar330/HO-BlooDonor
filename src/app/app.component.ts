@@ -3,6 +3,8 @@ import { UtilityService } from './common-utilities/utility.service';
 import { Router } from '@angular/router';
 import { LoadingController, MenuController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+import { AdminDetailI } from './interface/interface';
+import { ShareDataService } from './common-utilities/shareData.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,9 +21,17 @@ export class AppComponent {
   ];
   private loading;
   private lastBack;
-  constructor(private platform: Platform, private router: Router, private utility: UtilityService, private loadingController: LoadingController, private menuController: MenuController) {
+  public loggedInUser: any;
 
-    // this.checkLogin();
+  constructor(private shareData: ShareDataService, private platform: Platform, private router: Router, private utility: UtilityService, private loadingController: LoadingController, private menuController: MenuController) {
+
+    this.shareData.data$.subscribe(
+      (data) => {
+        this.loggedInUser = data;
+        console.log(this.loggedInUser)
+      }
+    );
+    this.checkLogin();
     this.initializeApp()
   }
 
@@ -39,6 +49,7 @@ export class AppComponent {
 
   checkLogin() {
     this.utility._getStorage('admin').then(data => {
+      this.utility._log(this.loggedInUser);
       if (data.value) {
         this.router.navigateByUrl('/home');
       } else {
@@ -49,17 +60,19 @@ export class AppComponent {
 
     })
   }
+
   onMenuClick(menuDetails) {
     if (menuDetails.title == 'LogOut') {
       this.logout();
     }
-    // console.log("menuDetails",menuDetails);
     this.router.navigate(['/' + menuDetails.url])
   }
+
   logout() {
     this.loadingController.create({
       message: 'Please wait'
     }).then((overlay) => {
+      this.router.navigate([''], { replaceUrl: true });
       this.loading = overlay;
       this.loading.present()
     })
