@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { provideFirebaseApp, initializeApp } from "@angular/fire/app";
 import { provideFirestore, getFirestore } from "@angular/fire/firestore";
+import { provideAuth, getAuth } from "@angular/fire/auth";
 import { AngularFireModule } from '@angular/fire/compat';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,18 +21,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule, ReactiveFormsModule, 
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),
-    provideFirestore(() => getFirestore()), HttpClientModule, BrowserAnimationsModule],
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    HttpClientModule, BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthGuardGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule { 
+export class AppModule {
 
-  constructor(){
+  constructor() {
 
   }
 
- 
+
 }

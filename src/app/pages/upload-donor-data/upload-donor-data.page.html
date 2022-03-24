@@ -1,11 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>uploadDonorData</ion-title>
+  <ion-toolbar color="danger">
+    <ion-button slot="start" (click)="onMenuClick()" fill="clear">
+      <ion-icon color="light" slot="icon-only" name="menu"></ion-icon>
+    </ion-button>
+    <ion-title>
+      Upload Donor Data
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-button (click)="uploadData()">
-    <ion-icon name="cloud-upload-outline"></ion-icon>
-  </ion-button>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="2">
+      <ion-button (click)="uploadData()">
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <div class="ion-text-center">Click to upload data from json file, make sure you have changed format of date
+  </div>
 </ion-content>

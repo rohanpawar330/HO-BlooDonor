@@ -3,6 +3,7 @@ import donorData from '../../../../uploadDonorDataToCloud/bloodDonorList.json';
 import { DonorService } from '../../services/donor.service';
 import { UserDetailsI } from '../../interface/interface';
 import { UtilityService } from 'src/app/common-utilities/utility.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-upload-donor-data',
@@ -11,16 +12,17 @@ import { UtilityService } from 'src/app/common-utilities/utility.service';
 })
 export class UploadDonorDataPage implements OnInit {
 
-  constructor(private donorService: DonorService, private utility: UtilityService) { }
+  constructor(private donorService: DonorService, private utility: UtilityService, private menuController: MenuController) { }
 
   ngOnInit() {
   }
 
   uploadData() {
     // this.utility._showLoader();
-    donorData.forEach(userData => {
-      // this.donorService.addDonor({
-      let data = {
+    donorData.donorList.forEach((userData) => {
+      console.log(donorData)
+      this.donorService.addDonor({
+        // let data = {
         firstName: userData.firstName,
         lastName: userData.lastName,
         mobileNo: userData.mobileNo,
@@ -35,23 +37,33 @@ export class UploadDonorDataPage implements OnInit {
           area: userData.area,
           state: userData.state,
         }
-      }
-      console.log(data)
-      // });
+        // }
+        // console.log(data)
+      });
 
     });
     // this.utility._hideLoader();
   }
 
   _manuplateDate(dateofDonation) {
-    let dateArrayDDMMYYYY = (dateofDonation).split("/")
-    if (dateArrayDDMMYYYY[0] < 10 && dateArrayDDMMYYYY[0].length < 2)
-      dateArrayDDMMYYYY[0] = '0' + dateArrayDDMMYYYY[0]
-    if (dateArrayDDMMYYYY[1] < 10 && dateArrayDDMMYYYY[1].length < 2)
-      dateArrayDDMMYYYY[1] = '0' + dateArrayDDMMYYYY[1]
-    console.log(dateArrayDDMMYYYY)
-    // return (dateofDonation).split("/").reverse().join("-").concat("T00:00:00.000Z")
-    return dateArrayDDMMYYYY.reverse().join("-").concat("T00:00:00.000Z")
+    console.log(dateofDonation)
+    if (dateofDonation) {
+      let dateArrayDDMMYYYY = (dateofDonation).split("/")
+      if (dateArrayDDMMYYYY[0] < 10 && dateArrayDDMMYYYY[0].length < 2)
+        dateArrayDDMMYYYY[0] = '0' + dateArrayDDMMYYYY[0]
+      if (dateArrayDDMMYYYY[1] < 10 && dateArrayDDMMYYYY[1].length < 2)
+        dateArrayDDMMYYYY[1] = '0' + dateArrayDDMMYYYY[1]
+      console.log(dateArrayDDMMYYYY)
+      // return (dateofDonation).split("/").reverse().join("-").concat("T00:00:00.000Z")
+      return dateArrayDDMMYYYY.reverse().join("-").concat("T00:00:00.000Z")
+    } else {
+      return null
+    }
+  }
+
+  onMenuClick() {
+    this.menuController.enable(true, 'id')
+    this.menuController.open('id')
   }
 
 }

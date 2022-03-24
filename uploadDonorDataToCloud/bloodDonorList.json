@@ -1,198 +1,116 @@
-[
-    {
-        "firstName": "rohan",
-        "lastName": "pawar",
-        "age": 27,
-        "bloodGroup": "A+",
-        "mobileNo": 9898989898,
-        "gender": "Male",
-        "dateOfDonation": "9/10/2021",
-        "availableForDonation": null,
-        "city": "jbp",
-        "area": "Ranjhi",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Aman",
-        "lastName": "singh",
-        "age": 26,
-        "bloodGroup": "O+",
-        "mobileNo": 1919191919,
-        "gender": "Male",
-        "dateOfDonation": "1/3/2022",
-        "availableForDonation": null,
-        "city": "banaras",
-        "area": "Ranjhi",
-        "state": "UP",
-        "donationType": null
-    },
-    {
-        "firstName": "Kanni",
-        "lastName": "kohli",
-        "age": 27,
-        "bloodGroup": "A+",
-        "mobileNo": 8787878787,
-        "gender": "Female",
-        "dateOfDonation": "09/2/2022",
-        "availableForDonation": null,
-        "city": "Jbp",
-        "area": "Ranjhi",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Shahreen",
-        "lastName": "Shahreen",
-        "age": 24,
-        "bloodGroup": "O+",
-        "mobileNo": 8923849283,
-        "gender": "Female",
-        "dateOfDonation": "7/11/2021",
-        "availableForDonation": null,
-        "city": "Indore",
-        "area": "vijay nagar",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Ravi",
-        "lastName": "Sharma",
-        "age": 45,
-        "bloodGroup": "O+",
-        "mobileNo": 2342342342,
-        "gender": "Male",
-        "dateOfDonation": "1/1/2022",
-        "availableForDonation": null,
-        "city": "katni",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Praveen",
-        "lastName": "Gupta",
-        "age": 33,
-        "bloodGroup": "O+",
-        "mobileNo": 2342342344,
-        "gender": "Male",
-        "dateOfDonation": "12/2/2022",
-        "availableForDonation": null,
-        "city": "sihora",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Pooja",
-        "lastName": "Moo",
-        "age": 23,
-        "bloodGroup": "O+",
-        "mobileNo": 2312121111,
-        "gender": "Female",
-        "dateOfDonation": "9/2/2022",
-        "availableForDonation": null,
-        "city": "Indore",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Seeta",
-        "lastName": "Sivahare",
-        "age": 46,
-        "bloodGroup": "O+",
-        "mobileNo": 9893894349,
-        "gender": "Female",
-        "dateOfDonation": "15/1/2022",
-        "availableForDonation": null,
-        "city": "chhindwara",
-        "area": "Saori",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Geeta",
-        "lastName": "Rathi",
-        "age": 25,
-        "bloodGroup": "O+",
-        "mobileNo": 8898234234,
-        "gender": "Female",
-        "dateOfDonation": "09/01/2022",
-        "availableForDonation": null,
-        "city": "Indore",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Hari",
-        "lastName": "Sharna",
-        "age": 38,
-        "bloodGroup": "O+",
-        "mobileNo": 4545454555,
-        "gender": "Male",
-        "dateOfDonation": "09/10/2021",
-        "availableForDonation": null,
-        "city": "Indore",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Deepak",
-        "lastName": "Patel",
-        "age": 33,
-        "bloodGroup": "O+",
-        "mobileNo": 6767667677,
-        "gender": "Male",
-        "dateOfDonation": "09/11/2021",
-        "availableForDonation": null,
-        "city": "jbp",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Himanshu",
-        "lastName": "Kuvar",
-        "age": 34,
-        "bloodGroup": "O+",
-        "mobileNo": 7676767676,
-        "gender": "Male",
-        "dateOfDonation": "12/08/2021",
-        "availableForDonation": null,
-        "city": "jbp",
-        "area": "ABC",
-        "state": "MP",
-        "donationType": null
-    },
-    {
-        "firstName": "Pathak",
-        "lastName": "Pandit",
-        "age": 25,
-        "bloodGroup": "O+",
-        "mobileNo": 6766666666,
-        "gender": "Male",
-        "dateOfDonation": "19/12/2021",
-        "availableForDonation": null,
-        "city": "banaras",
-        "area": "ABC",
-        "state": "UP",
-        "donationType": null
-    },
-    {
-        "firstName": "Dhyan",
-        "lastName": "Kumar",
-        "age": 24,
-        "bloodGroup": "O+",
-        "mobileNo": 3434534553,
-        "gender": "Male",
-        "dateOfDonation": "15/12/2021",
-        "availableForDonation": null,
-        "city": "banaras",
-        "area": "ABC",
-        "state": "UP",
-        "donationType": null
-    }
-]
+{
+    "donorList": [
+        {
+            "firstName": "rohan",
+            "lastName": "pawar",
+            "age": 27,
+            "bloodGroup": "A+",
+            "mobileNo": 9898989898,
+            "gender": "Male",
+            "dateOfDonation": null,
+            "donationType": null,
+            "city": "jbp",
+            "area": "Ranjhi",
+            "state": "MP",
+            "pincode": 482005
+        },
+        {
+            "firstName": "Aman",
+            "lastName": "singh",
+            "age": 26,
+            "bloodGroup": "O+",
+            "mobileNo": 1919191919,
+            "gender": "Male",
+            "dateOfDonation": "02\/03\/2022",
+            "donationType": null,
+            "city": "banaras",
+            "area": "Ranjhi",
+            "state": "UP",
+            "pincode": 482005
+        },
+        {
+            "firstName": "Kanni",
+            "lastName": "kohli",
+            "age": 27,
+            "bloodGroup": "A+",
+            "mobileNo": 8787878787,
+            "gender": "Female",
+            "dateOfDonation": "11\/01\/2022",
+            "donationType": "blood",
+            "city": "Jbp",
+            "area": "Ranjhi",
+            "state": "MP",
+            "pincode": 482005
+        },
+        {
+            "firstName": "Shahreen",
+            "lastName": "Shahreen",
+            "age": 24,
+            "bloodGroup": "O+",
+            "mobileNo": 8923849283,
+            "gender": "Female",
+            "dateOfDonation": "16\/02\/2022",
+            "donationType": null,
+            "city": "Indore",
+            "area": "vijay nagar",
+            "state": "MP",
+            "pincode": 410101
+        }
+    ],
+    "dontionType": [
+        {
+            "donationType": "blood"
+        },
+        {
+            "donationType": "platelets"
+        },
+        {
+            "donationType": "plasma"
+        }
+    ],
+    "bloodGroup": [
+        {
+            "bloodGroup": "A+"
+        },
+        {
+            "bloodGroup": "A-"
+        },
+        {
+            "bloodGroup": "AB+"
+        },
+        {
+            "bloodGroup": "AB-"
+        },
+        {
+            "bloodGroup": "B+"
+        },
+        {
+            "bloodGroup": "B-"
+        },
+        {
+            "bloodGroup": "O+"
+        },
+        {
+            "bloodGroup": "O-"
+        }
+    ],
+    "gender": [
+        {
+            "gender": "Male"
+        },
+        {
+            "gender": "Female"
+        },
+        {
+            "gender": "Other"
+        }
+    ],
+    "availableForDonation": [
+        {
+            "availableForDonation": "Yes"
+        },
+        {
+            "availableForDonation": "No"
+        }
+    ]
+}

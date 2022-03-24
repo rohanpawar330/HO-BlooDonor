@@ -21,6 +21,7 @@ export class UpdateDeleteModal implements OnInit {
   userDetail: UserDetailsI = null;
   getDonorDetail$: any;
   private rootUser: boolean = false;
+  todayDate = moment().utc().format();
 
   constructor(private alertController: AlertController, private utility: UtilityService, private donorService: DonorService, private modalCtrl: ModalController, private toastCtrl: ToastController) {
   }
@@ -38,7 +39,7 @@ export class UpdateDeleteModal implements OnInit {
       if (res.dateOfDonation)
         res.dateOfDonation = moment.parseZone(res.dateOfDonation).utc().format();
       else
-        res.dateOfDonation = moment().utc().format();
+        res.dateOfDonation = this.todayDate;
       this.userDetail = res
       console.log(this.userDetail)
       this.utility._hideLoader();
@@ -115,15 +116,16 @@ export class UpdateDeleteModal implements OnInit {
         message: 'User Detail updated!',
         duration: 2000
       });
-      toast.present().then(() => this.dismissModal());
+      toast.present().then(() => '');
+      this.dismissModal({ 'reload': true })
     } else {
       this.utility._confirmationAlert('Empty Fields!', 'Please fill all the required fields')
     }
 
   }
 
-  dismissModal() {
-    this.modalCtrl.dismiss()
+  async dismissModal(data?) {
+    await this.modalCtrl.dismiss(data)
   }
 
   ionDateChange(event) {

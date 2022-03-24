@@ -79,18 +79,17 @@ export class HomePage {
   }
 
   ngOnInit() {
-
-
-
+    this.getDonorListData();
   }
 
-  ionViewWillEnter() {
-    this.utility._getStorage('admin').then(data => {
-      this.shareData.emitdata(JSON.parse(data.value));
-    })
-
+  getDonorListData() {
     // *** working ****
     // this.utility._showLoader();
+    this.allDonors = []
+    this.availableDonors = []
+    this.donorDataList.availableDonors = [];
+    this.donorDataList.allDonors = [];
+    console.log(this.allDonors, this.availableDonors, this.donorDataList)
     this.donorService.getDonorsList().pipe(take(2)).subscribe((res: any) => {
       res.map(data =>
         data.availableForDonation = this.utility._availableForDonation(data.dateOfDonation, data.gender, data.donationType).availableForDonation
@@ -101,7 +100,7 @@ export class HomePage {
       this.donorDataList.allDonors = this.allDonors;
       console.log(this.donorDataList)
       console.log(res)
-      this.cd.detectChanges();
+      this.cd.markForCheck();
       setTimeout(() => {
         this.showLoading = false
       }, 2000);
@@ -112,6 +111,19 @@ export class HomePage {
       this.showLoading = false
       this.utility._errorAlert();
     });
+
+  }
+
+  async refreshData() {
+   await this.getDonorListData()
+   await this.utility._toastMsg("Data refreshed!..")
+  }
+
+  ionViewWillEnter() {
+    this.utility._getStorage('admin').then(data => {
+      this.shareData.emitdata(JSON.parse(data.value));
+    })
+
 
   }
 
@@ -130,7 +142,17 @@ export class HomePage {
       initialBreakpoint: 0.8
     });
 
+    modal.onDidDismiss().then((modelData) => {
+      if (modelData !== null) {
+        console.log('Modal Data : ' + modelData.data);
+      }
+    });
     await modal.present();
+    // await modal.dismiss().then((data: any) => {
+    //   if (data.data && data.data.reload)
+    //     // this.refreshData();
+    //   console.log("----------------------",data)
+    // });
   }
 
   // menuBar open
@@ -175,6 +197,13 @@ export class HomePage {
       this.availableDonors = this.availableDonors.filter((user: any) => {
         return (user.firstName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }
+  }
+
+  _reloadPage(event) {
+    console.log("----------------inside home", event)
+    if (event) {
+      this.refreshData()
     }
   }
 }

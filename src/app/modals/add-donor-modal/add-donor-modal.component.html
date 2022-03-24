@@ -34,11 +34,7 @@
         <ion-label position="floating">bloodGroup</ion-label>
         <app-bgselect-option class="width-100" (bloodGroupSelected)="_bloodGroupSelected($event)"></app-bgselect-option>
       </ion-item>
-      <ion-item>
-        <ion-label position="floating">Donation Type</ion-label>
-        <app-donation-selection-option class="width-100" (donationType)="_donationType($event)">
-        </app-donation-selection-option>
-      </ion-item>
+
 
       <ion-item>
         <ion-label position="floating">Donation Date</ion-label>
@@ -47,7 +43,7 @@
         <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
           <ng-template>
             <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" formControlName="dateOfDonation"
-              (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+              (ionChange)="ionDateChange($event)" (confirm)="confirm($event)" [max]="date">
             </ion-datetime>
             <ion-button (click)="closeDatePicker()">
               <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -58,6 +54,11 @@
       <!-- <span class="color-red"
         *ngIf="donorForm.get('dateOfDonation').touched && donorForm.get('dateOfDonation').invalid">*Requiured
         Field</span> -->
+      <ion-item>
+        <ion-label position="floating">Donation Type</ion-label>
+        <app-donation-selection-option class="width-100" (donationType)="_donationType($event)">
+        </app-donation-selection-option>
+      </ion-item>
       <ion-item>
         <ion-label position="floating">mobileNo</ion-label>
         <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>

@@ -14,7 +14,7 @@ import { AddAdminUserPage } from '../add-admin-user/add-admin-user.page';
 export class AdminDetailsPage implements OnInit {
 
   adminList: AdminDetailI[] = [];
-  rootUser: boolean = false
+  rootUser: AdminDetailI;
 
 
   constructor(private alertController: AlertController, private menuController: MenuController, private router: Router, private modalCtrl: ModalController, private navCtrl: NavController, private utility: UtilityService, private authService: AuthUserService, private cd: ChangeDetectorRef) {
@@ -28,7 +28,7 @@ export class AdminDetailsPage implements OnInit {
       console.log(JSON.parse(data.value))
       let rootUserData = JSON.parse(data.value);
       if (rootUserData && rootUserData.rootUser) {
-        this.rootUser = rootUserData.rootUser;
+        this.rootUser = rootUserData;
       }
     });
 
