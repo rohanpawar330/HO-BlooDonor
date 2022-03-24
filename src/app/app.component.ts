@@ -17,6 +17,8 @@ export class AppComponent {
     { title: 'Add Admin', url: '/admin-details', icon: 'person' },
     { title: 'About HO', url: '/about-us', icon: 'people' },
     { title: 'About TechAssembler', url: '/about-techassembler', icon: 'build' },
+    //to upload data from json uncomment below
+    // { title: 'Upload donor data', url: '/upload-donor-data', icon: 'cloud-upload' },
     { title: 'LogOut', url: '/phone-auth', icon: 'log-out' },
   ];
   private loading;
@@ -72,14 +74,15 @@ export class AppComponent {
     this.loadingController.create({
       message: 'Please wait'
     }).then((overlay) => {
-      this.router.navigate([''], { replaceUrl: true });
       this.loading = overlay;
       this.loading.present()
     })
     setTimeout(() => {
       this.loading.dismiss();
       this.menuController.close();
-      this.utility._clearStorage()
+      this.utility._clearStorage().then(() => {
+        this.router.navigate([''], { replaceUrl: true });
+      })
     }, 2000);
 
   }

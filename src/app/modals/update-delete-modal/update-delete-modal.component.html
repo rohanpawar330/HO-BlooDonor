@@ -29,7 +29,7 @@
             <ion-popover mode="ios" trigger="date" size="cover" #datePopOver>
                 <ng-template>
                     <ion-datetime presentation="date" [(ngModel)]="userDetail.dateOfDonation" locale="en-GB"
-                        (ionChange)="ionDateChange($event)" (confirm)="confirm($event)">
+                        (ionChange)="ionDateChange($event)" (confirm)="confirm($event)" [max]="todayDate">
                     </ion-datetime>
                     <ion-button (click)="closeDatePicker()">
                         OK

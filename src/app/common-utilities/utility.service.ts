@@ -120,7 +120,7 @@ export class UtilityService {
   _copyUserDetail(userDetail) {
     Clipboard.write({
       string: `
-      Name : ${userDetail.firstName} ${userDetail.lastName}
+        Name : ${userDetail.firstName} ${userDetail.lastName}
       Mobile no. : ${userDetail.mobileNo}
       BloodGroup : ${userDetail.bloodGroup}
       Address : ${userDetail.address.area} ${userDetail.address.city} ${userDetail.address.state}
@@ -142,8 +142,9 @@ export class UtilityService {
     return Storage.get({ key: dataToGet })
   }
 
-  _clearStorage() {
-    Storage.clear();
+  _clearStorage(): Promise<any> {
+    window.localStorage.clear();
+    return Storage.clear();
   }
   // END Storage
 
@@ -151,6 +152,7 @@ export class UtilityService {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
+      duration: 20000
     });
     await loading.present();
   }
@@ -189,7 +191,8 @@ export class UtilityService {
   async _toastMsg(msg) {
     const toast = await this.toastCtrl.create({
       message: msg,
-      duration: 2000
+      duration: 2000,
+      // mode:'ios'
     });
     toast.present()
   }
