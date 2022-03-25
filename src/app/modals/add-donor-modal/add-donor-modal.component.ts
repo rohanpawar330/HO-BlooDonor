@@ -41,7 +41,7 @@ export class AddDonorModal implements OnInit {
       lastName: new FormControl('', Validators.required),
       // gender: new FormControl(''),
       mobileNo: new FormControl('', Validators.compose([Validators.required, Validators.pattern(this.phoneRegex)])),
-      age: new FormControl('', Validators.compose([Validators.required, Validators.min(18), Validators.max(40)])),
+      age: new FormControl('', Validators.compose([Validators.required, Validators.min(18), Validators.max(60)])),
       dateOfDonation: new FormControl(''),
       // , Validators.required
       // donationType: new FormControl(''),
@@ -82,8 +82,10 @@ export class AddDonorModal implements OnInit {
           state: this.userDetail.address.state,
         }
       }).then(() => {
+        this.userDetail.dateOfDonation = null;
+        this.donorForm.reset();
         this.utility._hideLoader();
-        this._dismiss();
+        this._dismiss({ 'reload': true })
       }).catch(() => {
         this.utility._hideLoader();
         this.utility._errorAlert();
@@ -97,8 +99,8 @@ export class AddDonorModal implements OnInit {
 
   cancel() { this._dismiss(); }
 
-  _dismiss() {
-    this.modalCtrl.dismiss();
+  async _dismiss(data?) {
+    await this.modalCtrl.dismiss(data)
   }
 
   ionDateChange(event) {

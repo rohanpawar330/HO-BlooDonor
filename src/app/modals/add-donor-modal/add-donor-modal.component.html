@@ -61,14 +61,14 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">mobileNo</ion-label>
-        <ion-input [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
+        <ion-input type="number" [(ngModel)]="userDetail.mobileNo" formControlName="mobileNo"></ion-input>
       </ion-item>
       <span class="color-red" *ngIf="donorForm.get('mobileNo').touched && donorForm.get('mobileNo').invalid">*Please
         enter valid mobile no.
       </span>
       <ion-item>
         <ion-label position="floating">age</ion-label>
-        <ion-input [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
+        <ion-input type="number" [(ngModel)]="userDetail.age" formControlName="age"></ion-input>
       </ion-item>
 
       <span class="color-red" *ngIf="donorForm.get('age').touched && donorForm.get('age').invalid">*Please enter valid

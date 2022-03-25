@@ -115,8 +115,8 @@ export class HomePage {
   }
 
   async refreshData() {
-   await this.getDonorListData()
-   await this.utility._toastMsg("Data refreshed!..")
+    await this.getDonorListData()
+    await this.utility._toastMsg("Data refreshed!..")
   }
 
   ionViewWillEnter() {
@@ -131,7 +131,15 @@ export class HomePage {
     const modal = await this.modalCtrl.create({
       component: AddDonorModal,
     });
-    return await modal.present();
+
+    modal.onDidDismiss().then((modelData) => {
+      if (modelData !== null) {
+        console.log('Modal Data : ' + modelData.data);
+        this.refreshData();
+      }
+    });
+
+    await modal.present();
   }
 
   async openDonar(userDetail: UserDetailsI) {
@@ -145,6 +153,7 @@ export class HomePage {
     modal.onDidDismiss().then((modelData) => {
       if (modelData !== null) {
         console.log('Modal Data : ' + modelData.data);
+        this.refreshData();
       }
     });
     await modal.present();
